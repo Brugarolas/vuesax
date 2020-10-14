@@ -27,7 +27,8 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "serve": "vue-cli-service serve --open",
-    "build": "vue build -t lib src/index.js --name vuesax",
+    "build": "vue-cli-service build --target lib src/index.js --name vuesax",
+    "build:no-linter": "vue-cli-service build --target lib src/index.js --name vuesax  --skip-plugins @vue/cli-plugin-eslint --max-errors Infinity",
     "lint": "vue-cli-service lint",
     "v": "npm version patch",
     "v2": "npm version minor",
@@ -77,6 +78,9 @@
     "plugins": {
       "autoprefixer": {}
     }
+  },
+  "engines": {
+    "node": ">=10.13.0"
   },
   "browserslist": [
     "> 1%",
