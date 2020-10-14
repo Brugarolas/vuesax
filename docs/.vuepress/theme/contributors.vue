@@ -48,15 +48,13 @@ export default {
       contribuitorsx:[],
     }
   },
-
-
   mounted(){
     this.consultContributors()
   },
   watch:{
     contribuitors(){
       // console.log("cambio", this.Contribuitors);
-      this.Contribuitorsx = []
+      this.contribuitorsx = []
       this.consultContributors()
     }
   },
@@ -70,10 +68,12 @@ export default {
         fetch('https://api.github.com/repos/'+this.repo+'/contributors')
         .then(response => response.json())
         .then(json => {
-         this.contribuitorsx = json
+          this.contribuitorsx = json
         })
       } else {
-        this.contribuitors.forEach((item)=>{
+        const contribuitors = this.contributors || []
+
+        contribuitors.forEach((item)=>{
           fetch(`https://api.github.com/users/${item}`)
           .then(response => response.json())
           .then(json => {
