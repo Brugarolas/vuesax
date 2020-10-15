@@ -1,5 +1,5 @@
 import * as vsComponents from './components'
-import './style/vuesax.styl'
+import './styles/vuesax.styl'
 import vsTheme from './utils/theme.js'
 import DefineVuesaxMixin from './defineGlobalMixin'
 import vuesaxOptions from './utils/options'
@@ -70,6 +70,3 @@ export { default as vsImages } from './components/vsImages'
 //layout
 export { default as vsRow } from './layout/vsRow/'
 export { default as vsCol } from './layout/vsCol/'
-
-
-
