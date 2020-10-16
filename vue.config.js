@@ -1,4 +1,5 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   productionSourceMap: false,
@@ -8,7 +9,13 @@ module.exports = {
         test: /\.styl$/,
         use: [
           { loader: 'css-loader' },
-          { loader: 'stylus-loader' }
+          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: 'stylus-loader',
+            options: {
+              webpackImporter: true
+            }
+          }
         ]
       }],
     },

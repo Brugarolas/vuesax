@@ -13,7 +13,23 @@ module.exports = {
     //         a.appendChild(r);
     //     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`]
   ],
-  ga:'UA-122319353-1',
+  plugins: [
+    [
+      '@vuepress/pwa', {
+        serviceWorker: true,
+        updatePopup: {
+          '/': {
+            message: "New content is available.",
+            buttonText: "Refresh"
+          }
+        }
+      }
+    ], [
+      '@vuepress/google-analytics', {
+        ga: 'UA-12345678-9'
+      }
+    ]
+  ],
   docsDir: 'docs',
   host:'localhost',
   port: 7070,
