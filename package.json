@@ -26,10 +26,10 @@
   "private": false,
   "scripts": {
     "dev": "vuepress dev docs",
-    "dev:cache": "vue-cli-service serve --open --temp .tmp",
-    "serve": "vue-cli-service serve --open",
+    "serve": "vue-cli-service serve --target lib src/index.js --open",
+    "serve:no-linter": "vue-cli-service serve --target lib src/index.js --open --skip-plugins @vue/cli-plugin-eslint --max-errors Infinity",
     "build": "vue-cli-service build --target lib src/index.js --name vuesax",
-    "build:no-linter": "vue-cli-service build --target lib src/index.js --name vuesax  --skip-plugins @vue/cli-plugin-eslint --max-errors Infinity",
+    "build:no-linter": "vue-cli-service build --target lib src/index.js --name vuesax --skip-plugins @vue/cli-plugin-eslint --max-errors Infinity",
     "lint": "vue-cli-service lint",
     "v": "npm version patch",
     "v2": "npm version minor",
