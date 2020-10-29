@@ -4,3 +4,4 @@
 - Fix VsButton throwing error on $nextTick(), when component does not exist in next tick
 - Fix missing content of expandable-data table (https://github.com/lusaxweb/vuesax/pull/931)
 - Fix VsSelect open/close at the same time (https://github.com/lusaxweb/vuesax/pull/842)
+- Fix VsUpload not working on iOS < 13.7
