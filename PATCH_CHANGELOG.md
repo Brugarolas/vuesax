@@ -1,6 +1,10 @@
+## [3.12.2-patch-4] 29/10/2020
+### Fixed
+- Fix buttons on VsInputNumber
+
 ## [3.12.2-patch-2] 29/10/2020
 ### Fixed
-- Fix: set step property on input so it accept decimals
+- Fix: set step property on VsInputNumber so it accept decimals
 
 ## [3.12.2-patch-1] 29/10/2020
 ### Fixed
