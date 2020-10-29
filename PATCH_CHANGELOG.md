@@ -2,3 +2,4 @@
 ### Fixed
 - Fix buttom element in VsUpload with no type="button", triggering submit if inside a form
 - Fix VsButton throwing error on $nextTick(), when component does not exist in next tick
+- Fix missing content of expandable-data table (https://github.com/lusaxweb/vuesax/pull/931)

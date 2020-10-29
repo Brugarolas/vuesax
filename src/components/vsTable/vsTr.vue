@@ -102,17 +102,18 @@ export default {
     },
     clicktd (evt) {
       if(this.$parent.multiple || !this.$slots.expand) return
-      let tr = evt.target.closest('tr')
+      const tr = evt.target.closest('tr')
       if(this.expanded) {
         tr.parentNode.removeChild(tr.nextSibling)
         tr.classList.remove('tr-expandedx')
         this.expanded = false
       } else {
         tr.classList.add('tr-expandedx')
-        let trx = Vue.extend(trExpand);
-        let instance = new trx({parent: this, propsData: {colspan: this.colspan}});
+        const trx = Vue.extend(trExpand);
+        const instance = new trx({parent: this, propsData: {colspan: this.colspan}});
+        instance.$slots.default = this.$slots.expand;
         instance.vm = instance.$mount();
-        var newTR = document.createElement('tr').appendChild(instance.vm.$el);
+        const newTR = document.createElement('tr').appendChild(instance.vm.$el);
         this.insertAfter(tr, newTR)
         this.expanded = true
       }
