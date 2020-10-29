@@ -1,14 +1,10 @@
 {
-  "name": "vuesax",
+  "name": "@brugarolas/vuesax",
   "version": "3.12.2",
-  "description": "Framework Components for Vue js",
+  "description": "Framework Components for Vue js. This is a fork. Original framework is made by lusaxweb.",
   "license": "MIT",
-  "author": "ldrovira <luisdanielrovira8@gmail.com>",
-  "homepage": "https://lusaxweb.github.io/vuesax/#/",
-  "repository": "lusaxweb/vuesax",
-  "bugs": {
-    "url": "https://github.com/lusaxweb/vuesax/issues"
-  },
+  "author": "andres-brugarolas",
+  "repository": "https://github.com/Brugarolas/vuesax",
   "keywords": [
     "vuesax",
     "vue",
@@ -47,7 +43,7 @@
   },
   "dependencies": {
     "chalk": "^2.4.2",
-    "vue": "^2.6.9"
+    "vue": "^2.6.12"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
