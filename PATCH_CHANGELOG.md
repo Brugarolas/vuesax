@@ -1,4 +1,4 @@
-## [3.12.2-patch-4] 29/10/2020
+## [3.12.2-patch-3] 29/10/2020
 ### Fixed
 - Fix buttons on VsInputNumber
 
