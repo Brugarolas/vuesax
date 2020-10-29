@@ -1,4 +1,4 @@
-## [3.12.2-patch1] 29/10/2020
+## [3.12.2-patch-1] 29/10/2020
 ### Fixed
 - Fix buttom element in VsUpload with no type="button", triggering submit if inside a form
 - Fix VsButton throwing error on $nextTick(), when component does not exist in next tick

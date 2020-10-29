@@ -75,10 +75,10 @@
         class="con-input-upload">
         <input
           v-bind="$attrs"
-          :disabled="$attrs.disabled || maxFilesUploaded"
-          type="file"
           :accept="accept"
           :capture="capture"
+          :disabled="$attrs.disabled || maxFilesUploaded"
+          type="file"
           @change="getFiles">
         <span class="text-input">
           {{ text }}
