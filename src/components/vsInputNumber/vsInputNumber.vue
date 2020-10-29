@@ -31,6 +31,7 @@
       :disabled="isDisabled"
       :min="min"
       :max="max"
+      :step="step"
       type="number"
       class="vs-input-number--input"
       v-on="listeners">

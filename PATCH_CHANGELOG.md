@@ -1,3 +1,7 @@
+## [3.12.2-patch-2] 29/10/2020
+### Fixed
+- Fix: set step property on input so it accept decimals
+
 ## [3.12.2-patch-1] 29/10/2020
 ### Fixed
 - Fix buttom element in VsUpload with no type="button", triggering submit if inside a form
