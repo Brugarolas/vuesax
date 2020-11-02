@@ -4,9 +4,7 @@
       v-if="viewActive"
       :src="viewSrc" />
 
-
     <div class="con-img-upload">
-      <!-- <transition-group v-for="(img,index) in getFilesFilter" :key="index" name="upload"> -->
       <div
         v-for="(img,index) in getFilesFilter"
         :class="{
@@ -67,20 +65,19 @@
           </span>
         </h4>
       </div>
-      <!-- </transition-group > -->
-
 
       <div
         :class="{
           'on-progress-all-upload':percent != 0,
           'is-ready-all-upload':percent >= 100,
-          'disabled-upload':$attrs.hasOwnProperty('disabled') || limit?(srcs.length - itemRemove.length) >= Number(limit):false
+          'disabled-upload':$attrs.hasOwnProperty('disabled') || maxFilesUploaded
         }"
         class="con-input-upload">
         <input
-          ref="fileInput"
           v-bind="$attrs"
-          :disabled="$attrs.disabled || limit?(srcs.length - itemRemove.length) >= Number(limit):false"
+          :accept="accept"
+          :capture="capture"
+          :disabled="$attrs.disabled || maxFilesUploaded"
           type="file"
           @change="getFiles">
         <span class="text-input">
@@ -159,6 +156,14 @@
       singleUpload: {
         default: false,
         type: Boolean
+      },
+      accept: {
+        default: null,
+        type: String
+      },
+      capture: {
+        default: null,
+        type: String
       }
     },
     data:()=>({
@@ -186,6 +191,9 @@
         })
         return postFiles.length
       },
+      maxFilesUploaded() {
+        return this.limit ? (this.srcs.length - this.itemRemove.length) >= Number(this.limit) : false
+      }
     },
     watch:{
       percent(){
@@ -299,9 +307,6 @@
             this.$emit('change', e.target.value, this.filesx)
           }
         }
-        const input = this.$refs.fileInput
-        input.type = 'text'
-        input.type = 'file'
 
         if (this.automatic) {
           this.upload('all')

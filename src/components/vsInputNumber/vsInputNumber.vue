@@ -31,6 +31,7 @@
       :disabled="isDisabled"
       :min="min"
       :max="max"
+      :step="step"
       type="number"
       class="vs-input-number--input"
       v-on="listeners">
@@ -167,6 +168,9 @@ export default {
           this.$emit('input',evt.target.value)
         }
       }
+    },
+    stepChange () {
+      return this.step === 'any' ? 1 : parseFloat(this.step)
     }
   },
   watch:{
@@ -185,7 +189,7 @@ export default {
         this.$emit('input',this.fixPrecision(newValue))
       } else  {
         if(this.max?parseFloat(this.value)<parseFloat(this.max):true){
-          newValue = parseFloat(this.value) + parseFloat(this.step)
+          newValue = parseFloat(this.value) + this.stepChange
           this.$emit('input',this.fixPrecision(newValue))
         }
       }
@@ -197,12 +201,16 @@ export default {
         this.$emit('input',this.fixPrecision(newValue))
       } else  {
         if(this.min?parseFloat(this.value)>parseFloat(this.min):true){
-          newValue = parseFloat(this.value) - parseFloat(this.step)
+          newValue = parseFloat(this.value) - this.stepChange
           this.$emit('input',this.fixPrecision(newValue))
         }
       }
     },
     fixPrecision(n) {
+      if (this.step === 'any') {
+        return n;
+      }
+
       const precision = (this.step + '').split('.')[1];
       return n.toFixed(precision ? precision.length : 0);
     }

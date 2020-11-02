@@ -439,10 +439,10 @@ export default {
       });
     },
     clickBlur(event) {
-      if (event.target === this.$refs.inputselect) {
+      if (event.target === this.$refs.inputselect || event.target === document.body) {
         return
       }
-      let closestx = event.target.closest(".vs-select--option");
+      const closestx = event.target.closest(".vs-select--options");
 
       if (!closestx) {
         this.closeOptions();
