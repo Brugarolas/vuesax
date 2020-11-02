@@ -38,7 +38,7 @@
     <span
       v-if="$slots.default"
       class="vs-button-text vs-button--text">
-      <slot/>
+      <slot />
     </span>
 
     <span
@@ -104,12 +104,12 @@ export default {
       type:Boolean
     },
     to:{
-      default:false,
-      type:String | Object
+      default:null,
+      type:[String, Object]
     },
     href:{
       default:'',
-      type:String | Object
+      type:[String, Object]
     },
     target:{
       default:false,
@@ -147,31 +147,36 @@ export default {
           background: _color.getColor(this.color, 1),
           boxShadow: this.hoverx ? `0px 8px 25px -8px ${_color.getColor(this.color, 1)}` : null
         }
-      } else if (this.is('border') || this.is('flat')){
+      }
+      if (this.is('border') || this.is('flat')){
         return {
           border: `${this.is('flat') ? 0 : 1}px solid ${_color.getColor(this.color, 1)}`,
           background: this.hoverx?_color.getColor(this.color, .1) : 'transparent',
           color:_color.getColor(this.textColor, 1) || _color.getColor(this.color, 1)
         }
-      } else if (this.is('line')) {
+      }
+      if (this.is('line')) {
         return {
           color:_color.getColor(this.textColor, 1) || _color.getColor(this.color, 1),
           borderBottomWidth: this.linePosition == 'bottom' ? `2px` : null,
           borderColor: `${_color.getColor(this.color, .2)}`,
           borderTopWidth: this.linePosition == 'top' ? `2px` : null,
         }
-      } else if (this.is('gradient')) {
+      }
+      if (this.is('gradient')) {
         let backgroundx = `linear-gradient(${this.gradientDirection}, ${_color.getColor(this.color)} 0%, ${_color.getColor(this.gradientColorSecondary, 1)} 100%)`
         return {
           background: backgroundx,
         }
-      } else if (this.is('relief')) {
+      }
+      if (this.is('relief')) {
         let color = _color.getColor(this.color, 1)
         return {
           background: _color.getColor(this.color, 1),
           boxShadow: `0 3px 0 0 ${_color.darken(color, -0.4)}`
         }
       }
+      return null
     },
     stylesBackGround(){
       let styles = {
@@ -221,7 +226,7 @@ export default {
       }
     },
     routerPush() {
-      this.$router.push(this.to).catch(err => { this.$emit("routeErr", err) })
+      this.$router.push(this.to).catch(err => { this.$emit("route-error", err) })
     },
     is(which){
       let type = this.type
@@ -254,8 +259,11 @@ export default {
     },
     clickButton(event){
       this.$emit('click', event)
+
       this.$nextTick(() => {
-        if (this._isBeingDestroyed || this._isDestroyed){
+        const btn = this.$refs.btn
+
+        if (this._isBeingDestroyed || this._isDestroyed || !btn){
           return
         }
         if(this.isActive){
@@ -274,7 +282,7 @@ export default {
         if (this.type == 'border' || this.type == 'flat') {
           this.isActive = true
         }
-        let btn = this.$refs.btn
+
         let xEvent = event.offsetX
         let yEvent = event.offsetY
         let radio = btn.clientWidth * 3
@@ -308,8 +316,6 @@ export default {
           }, this.time * 1100)
         }
       });
-
-
     },
     isColor(){
       return _color.isColor(this.color)

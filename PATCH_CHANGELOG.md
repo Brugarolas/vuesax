@@ -1,3 +1,13 @@
+## [3.12.2-patch-4] Unreleased
+## Changed
+- Updated some dependencies
+## Removed
+- Postinstall.js and chalk dependency
+## Fixed
+- Some VsButton lint errors
+- Fixed another bug on VsButton $nexTick()
+- Fixed bug on VsDropDown when event.relatedTarget is null
+
 ## [3.12.2-patch-3] 29/10/2020
 ### Fixed
 - Fix buttons on VsInputNumber

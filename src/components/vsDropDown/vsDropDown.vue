@@ -6,7 +6,7 @@
     class="vs-con-dropdown parent-dropdown"
     type="button"
     v-on="listeners">
-    <slot/>
+    <slot />
   </button>
 </template>
 
@@ -104,34 +104,28 @@ export default {
       })
     },
     changePositionMenu() {
-      let [dropdownMenu] = this.$children.filter(item => item.hasOwnProperty('dropdownVisible'))
-      let scrollTopx = window.pageYOffset || document.documentElement.scrollTop;
-      if(this.$refs.dropdown.getBoundingClientRect().top + 300 >= window.innerHeight) {
+      const [dropdownMenu] = this.$children.filter(item => item.hasOwnProperty('dropdownVisible'))
+      const scrollTopx = window.pageYOffset || document.documentElement.scrollTop;
+      const clientRect = this.$refs.dropdown.getBoundingClientRect()
+      const menuWidth = dropdownMenu.$el.clientWidth
+
+      if(clientRect.top + 300 >= window.innerHeight) {
         this.$nextTick(() => {
-          dropdownMenu.topx = (this.$refs.dropdown.getBoundingClientRect().top - dropdownMenu.$el.clientHeight - 7) + scrollTopx
+          dropdownMenu.topx = (clientRect.top - dropdownMenu.$el.clientHeight - 7) + scrollTopx
           dropdownMenu.notHeight = true
         })
       } else {
         dropdownMenu.notHeight = false
-        dropdownMenu.topx = (this.$refs.dropdown.getBoundingClientRect().top + this.$refs.dropdown.clientHeight) + scrollTopx - 5
+        dropdownMenu.topx = (clientRect.top + this.$refs.dropdown.clientHeight) + scrollTopx - 5
       }
 
       this.$nextTick(() => {
-        var w = window.innerWidth
-        || document.documentElement.clientWidth
-        || document.body.clientWidth
-
-
-        if(this.$refs.dropdown.getBoundingClientRect().left + dropdownMenu.$el.offsetWidth >= w - 25) {
-          // this.rightx = true
-        }
-
-        if(this.$refs.dropdown.getBoundingClientRect().right < (dropdownMenu.$el.clientWidth + 25)) {
-          dropdownMenu.leftx = dropdownMenu.$el.clientWidth + this.$refs.dropdown.getBoundingClientRect().left
+        if(clientRect.right < (menuWidth + 25)) {
+          dropdownMenu.leftx = menuWidth + clientRect.left
           this.rightx = true
           return
         }
-        dropdownMenu.leftx = this.$refs.dropdown.getBoundingClientRect().left + (this.vsDropRight ? dropdownMenu.$el.clientWidth : this.$refs.dropdown.clientWidth );
+        dropdownMenu.leftx = clientRect.left + (this.vsDropRight ? menuWidth : this.$refs.dropdown.clientWidth );
       })
     },
     clickToogleMenu(evt) {
@@ -160,7 +154,7 @@ export default {
         if(typex == 'over'){
           dropdownMenu.dropdownVisible = this.vsDropdownVisible = true
         } else {
-          if (!evt.relatedTarget.classList.contains('vs-dropdown-menu')) {
+          if (evt.relatedTarget && !evt.relatedTarget.classList.contains('vs-dropdown-menu')) {
             dropdownMenu.dropdownVisible = this.vsDropdownVisible = false
           }
         }
