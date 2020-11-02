@@ -4,7 +4,7 @@
     },
     "dependencies": {
       "stylus": "^0.54.8",
-      "stylus-loader": "stylus-loader": "^4.1.1",
+      "stylus-loader": "stylus-loader": "^3.0.2",
     },
     "componentsDefaultDirectory": "components/{namespace}/{name}",
     "packageManager": "npm"

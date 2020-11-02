@@ -40,8 +40,7 @@
     "docs:deploy": "sh scripts/deploy.sh",
     "deployx": "npm run docs:deploy && npm run deploy",
     "deployx2": "npm run docs:deploy && npm run deploy2",
-    "new:component": "sh scripts/newComponent.sh",
-    "postinstall": "node postinstall.js"
+    "new:component": "sh scripts/newComponent.sh"
   },
   "dependencies": {
     "vue": "^2.6.12"
@@ -49,19 +48,18 @@
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/eslint-parser": "^7.12.1",
-    "@vue/cli-plugin-babel": "^4.5.7",
-    "@vue/cli-plugin-eslint": "^4.5.7",
-    "@vue/cli-service": "^4.5.7",
+    "@vue/cli-plugin-babel": "^4.5.8",
+    "@vue/cli-plugin-eslint": "^4.5.8",
+    "@vue/cli-service": "^4.5.8",
     "@vuepress/core": "^1.7.1",
     "@vuepress/plugin-pwa": "^1.7.1",
     "@vuepress/plugin-google-analytics": "^1.7.1",
-    "chalk": "^4.1.0",
-    "css-loader": "^4.3.0",
+    "css-loader": "^5.0.0",
     "copy-webpack-plugin": "^6.2.1",
-    "eslint": "^7.11.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "file-loader": "^6.1.1",
-    "mini-css-extract-plugin": "^1.0.0",
+    "eslint": "^7.12.1",
+    "eslint-plugin-vue": "^7.1.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^1.2.1",
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
     "viewcode": "0.0.27",
