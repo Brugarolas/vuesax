@@ -10,31 +10,28 @@
       }"
       class="con-vs-dropdown--menu vs-dropdown-menu"
       @mouseleave="mouseleavex"
-      @mouseenter="mouseenterx"
-    >
-      <!-- @mouseout="toggleMenu($event)" -->
-      <!-- @mouseover="toggleMenu($event)" -->
+      @mouseenter="mouseenterx">
+
       <ul
         v-if="!vsCustomContent"
-        class="vs-component vs-dropdown--menu" >
-        <slot/>
+        class="vs-component vs-dropdown--menu">
+        <slot />
       </ul>
       <div
         v-else
         class="vs-dropdown--custom vs-dropdown--menu">
-        <slot/>
+        <slot />
       </div>
       <div
         ref="menuAfter"
-        :class="[ vsDropRight ? 'vs-dropdown-right--menu--after' : 'vs-dropdown--menu--after']"
-      ></div>
+        :class="[ vsDropRight ? 'vs-dropdown-right--menu--after' : 'vs-dropdown--menu--after']" />
     </div>
   </transition>
 </template>
 
 <script>
 export default {
-  name: "VsDropdownMenu",
+  name: 'VsDropdownMenu',
   data: () => ({
     dropdownVisible: false,
     leftAfter: 20,
@@ -50,10 +47,12 @@ export default {
   }),
   watch:{
     dropdownVisible(val) {
-      let dropdownGroup = this.$children.filter(item => item.hasOwnProperty('activeGroup'))
+      const dropdownGroup = this.$children.filter(item => item.hasOwnProperty('activeGroup')) || []
+
       dropdownGroup.forEach((item_group)=>{
         item_group.activeGroup = false
       })
+
       this.setDirection()
 
       !val ? this.$parent.rightx = false : null
@@ -102,7 +101,8 @@ export default {
       this.widthx = this.$el.clientWidth
     },
     insertBody(){
-      let elp = this.$el
+      const elp = this.$el
+
       this.parentNode = this.$el.parentNode
       document.body.insertBefore(elp, document.body.firstChild)
     }

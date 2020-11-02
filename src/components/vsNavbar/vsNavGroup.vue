@@ -1,10 +1,10 @@
 <template>
   <li class="vs-nav-item">
     <div class="vs-nav-item-slot">
-      <slot></slot>
+      <slot />
     </div>
     <ul class="vs-nav-submenu">
-      <slot name="submenu"></slot>
+      <slot name="submenu" />
     </ul>
   </li>
 </template>

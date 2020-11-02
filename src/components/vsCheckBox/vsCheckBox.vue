@@ -23,7 +23,7 @@
       </span>
     </span>
     <span class="con-slot-label">
-      <slot/>
+      <slot />
     </span>
   </div>
 </template>
@@ -38,7 +38,10 @@ export default {
       default:'primary',
       type:String,
     },
-    value:{},
+    value:{
+      type:[Boolean,Array,String,Number,Object],
+      default:false
+    },
     icon:{
       default:'check',
       type:String
@@ -69,13 +72,9 @@ export default {
     },
     listeners() {
       return {
-        // ...this.$listeners,
         change: (evt) => {
           this.toggleValue(evt)
         },
-        // input: (evt) => {
-        //   this.toggleValue(evt)
-        // }
       }
     },
     isChecked() {
@@ -120,8 +119,9 @@ export default {
       }
     },
     isArrayIncludes() {
-      let modelx = this.value
-      let value = this.vsValue
+      const modelx = this.value
+      const value = this.vsValue
+
       return modelx.includes(value)
     },
     isArrayx() {

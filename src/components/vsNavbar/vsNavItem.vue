@@ -6,10 +6,10 @@
     @click="clickItem()"
     @mouseout="mouseout"
     @mouseover="mouseover">
-    <slot></slot>
+    <slot />
     <span
       :style="[styleAfter]"
-      class="vs-navbar-after"></span>
+      class="vs-navbar-after" />
   </li>
 </template>
 <script>

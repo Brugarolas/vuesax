@@ -12,7 +12,7 @@
     class="con-vs-chip">
 
     <span class="text-chip vs-chip--text">
-      <slot/>
+      <slot />
     </span>
 
     <button
@@ -37,7 +37,6 @@ export default {
     item:{
       type:Boolean,
     },
-    value:{},
     active:{
       type:Boolean,
       default:true,
@@ -79,17 +78,6 @@ export default {
       return {
         background: background,
         color: color
-      }
-    },
-    eliminado() {
-      if(this.item) {
-        return true
-      } else {
-        if(this.vsClosable) {
-          return this.value
-        } else {
-          return true
-        }
       }
     }
   },

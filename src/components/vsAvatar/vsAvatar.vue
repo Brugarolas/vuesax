@@ -134,8 +134,10 @@ export default {
       if(this.text.length <= 5) {
         return this.text
       }
-      let exp = /\s/g
-      var letras = ''
+
+      const exp = /\s/g
+      let letras = ''
+
       if(exp.test(this.text)) {
         this.text.split(exp).forEach((word)=>{
           letras += word[0].toUpperCase()
@@ -147,7 +149,9 @@ export default {
     },
     returnScale() {
       if(!this.text) return 1
-      let lengthx = this.returnText.length
+
+      const lengthx = this.returnText.length
+
       if(lengthx <= 5 && lengthx > 1) {
         return lengthx / (lengthx * 1.50)
       } else {

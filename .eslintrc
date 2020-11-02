@@ -3,7 +3,7 @@
   "root": true,
   "parserOptions": {
     "parser": "@babel/eslint-parser",
-    "ecmaVersion": 2017,
+    "ecmaVersion": 2021,
     "sourceType": "module"
   },
   "plugins": [
@@ -17,10 +17,17 @@
     "plugin:vue/strongly-recommended"
   ],
   "rules": {
-    "arrow-parens": 0,
-    "generator-star-spacing": "off",
-    "indent": "off",
-    "indent-legacy": ["error", 2],
+    "arrow-parens": "off",
+    "no-prototype-builtins": "off",
+    "no-var": "warn",
+    "prefer-template": "warn",
+    "no-useless-concat": "error",
+    "quotes": ["error", "single"],
+    "no-template-curly-in-string": "error",
+    "prefer-const": ["warn", {
+        "destructuring": "all",
+        "ignoreReadBeforeAssign": false
+    }],
     "max-depth": [
       "error",
       4
@@ -37,7 +44,6 @@
       "error",
       3
     ],
-    "vue/valid-v-on": 0,
     "vue/v-bind-style": [
       "error",
       "shorthand"
@@ -50,9 +56,9 @@
       "error",
       "PascalCase"
     ],
-    "vue/require-v-for-key": 0,
-    "vue/require-default-prop": 0,
-    "vue/require-prop-types":0,
-    "vue/html-self-closing":0
+    "vue/html-closing-bracket-newline": "off",
+    "vue/require-default-prop": "off",
+    "vue/multiline-html-element-content-newline": "off",
+    "vue/no-v-html": "off"
   }
 }

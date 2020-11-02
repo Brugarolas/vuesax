@@ -41,7 +41,8 @@
             size,
             {
               'vs-placeholder-label': labelPlaceholder,
-          }]"
+            }
+          ]"
           class="input-span-placeholder vs-input--placeholder"
           @click="focusInput">
           {{ $attrs.placeholder || labelPlaceholder }}
@@ -54,10 +55,9 @@
         :icon-pack="iconPack"
         :icon="icon"
         class="icon-inputx notranslate vs-input--icon"
-        @click="focusInput(); $emit('icon-click');">
-      </vs-icon>
+        @click="focusInput(); $emit('icon-click');" />
 
-      <transition name="icon-validate" >
+      <transition name="icon-validate">
         <span
           v-if="success || danger || warning"
           :class="{'icon-before':iconAfter}"
@@ -65,8 +65,7 @@
           <vs-icon
             :class="{'icon-before':iconAfter}"
             :icon-pack="valIconPack"
-            :icon="getIcon"
-          ></vs-icon>
+            :icon="getIcon" />
         </span>
       </transition>
     </div>
@@ -74,8 +73,7 @@
     <transition-group
       @before-enter="beforeEnter"
       @enter="enter"
-      @leave="leave"
-    >
+      @leave="leave">
       <div
         v-if="success"
         key="success"
@@ -127,6 +125,14 @@
 import _color from '../../utils/color.js'
 export default {
   name:'VsInput',
+  inject: {
+    elForm: {
+      default: ''
+    },
+    elFormItem: {
+      default: ''
+    }
+  },
   inheritAttrs: false,
   props:{
     value:{
@@ -214,14 +220,6 @@ export default {
       type:String
     },
   },
-  inject: {
-    elForm: {
-      default: ''
-    },
-    elFormItem: {
-      default: ''
-    }
-  },
   data:()=>({
     isFocus:false
   }),
@@ -271,12 +269,11 @@ export default {
       el.style.height = 0
     },
     enter(el, done){
-      let h = el.scrollHeight
-      el.style.height = h + 'px'
+      el.style.height = `${el.scrollHeight}px`
       done()
     },
     leave: function (el) {
-      el.style.height = 0 + 'px'
+      el.style.height = 0
     },
     focusInput(){
       this.$refs.vsinput.focus()

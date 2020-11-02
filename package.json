@@ -59,10 +59,11 @@
     "eslint": "^7.12.1",
     "eslint-plugin-vue": "^7.1.0",
     "file-loader": "^6.2.0",
+    "highlight.js": "^10.3.2",
+    "markdown-it": "^12.0.2",
     "mini-css-extract-plugin": "^1.2.1",
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
-    "viewcode": "0.0.27",
     "vuepress": "^1.7.1",
     "webpack": "^4.44.2"
   },

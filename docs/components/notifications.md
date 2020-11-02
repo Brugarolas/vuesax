@@ -69,9 +69,7 @@ To add a notification we have the global function `$vs.notify`. The first parame
 
 <vuecode md>
 <div slot="demo">
-
-  <Demos-Notifications-Defaults/>
-
+  <Demos-Notifications-Defaults />
 </div>
 <div slot="code">
 
@@ -102,8 +100,7 @@ export default {
         text:'Lorem ipsum dolor sit amet, consectetur',
         color:color
       })
-
-    },
+    }
   }
 }
 </script>
@@ -132,9 +129,7 @@ We can change the place where the notification appears with the property `positi
 
 <vuecode md>
 <div slot="demo">
-
   <Demos-Notifications-Position/>
-
 </div>
 <div slot="code">
 
@@ -170,6 +165,7 @@ export default {
 
 </box>
 
+
 <box>
 
 ## Icons
@@ -180,9 +176,7 @@ Vuesax uses the **Google Material Icons** font library by default. For a list of
 :::
 <vuecode md>
 <div slot="demo">
-
   <Demos-Notifications-Icons/>
-
 </div>
 <div slot="code">
 
@@ -220,11 +214,6 @@ export default {
 </box>
 
 
-
-</vuecode>
-
-</box>
-
 <box>
 
 ## Fixed and function click
@@ -233,9 +222,7 @@ Sometimes we need to execute a function when the user clicks on the notification
 
 <vuecode md>
 <div slot="demo">
-
   <Demos-Notifications-Click/>
-
 </div>
 <div slot="code">
 

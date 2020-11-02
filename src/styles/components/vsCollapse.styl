@@ -52,7 +52,8 @@
 .vs-collapse-item
   border-bottom: 1px solid rgba(0,0,0,.04)
   cursor: pointer;
-  transition: all .25s ease
+  transition: all .25s ease;
+  will-change: height;
   &.open-item
     .con-content--item
       opacity 1
@@ -93,6 +94,3 @@
   // transform: translate(0,-20px)
   opacity .2
   transition: all .25s ease
-
-
-

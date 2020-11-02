@@ -10,13 +10,12 @@
       class="vs-list--icon">
       <vs-icon
         :icon-pack="iconPack"
-        :icon="icon"></vs-icon>
+        :icon="icon" />
     </div>
     <div class="list-titles">
       <div
         v-if="title"
         class="vs-list--title">{{ title }}</div>
-        <!-- <div class="list-subtitle" v-if="subtitle">{{subtitle}}</div> -->
     </div>
   </div>
 </template>

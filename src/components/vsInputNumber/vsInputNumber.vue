@@ -19,8 +19,7 @@
       type="button">
       <vs-icon
         :icon-pack="iconPack"
-        :icon="iconDec"
-      ></vs-icon>
+        :icon="iconDec" />
     </button>
     <span v-if="label">{{ label }}</span>
     <input
@@ -48,8 +47,7 @@
       type="button">
       <vs-icon
         :icon-pack="iconPack"
-        :icon="iconInc"
-      ></vs-icon>
+        :icon="iconInc" />
     </button>
   </div>
 </template>
@@ -63,28 +61,33 @@ export default {
       bind(el, binding, vnode) {
         let intervalx = null;
         let startT;
+
         const functionx = () => vnode.context[binding.expression].apply();
         const bucle = () => {
-          if (new Date() - startT < 100) {
+          if (Date.now() - startT < 100) {
             functionx();
           }
           clearInterval(intervalx);
           intervalx = null;
         };
+
         const eventx = (e) => {
           if (e.button !== 0) return;
-          startT = new Date();
-          var escuchando = function() {
+          startT = Date.now();
+
+          const escuchando = function() {
             if (bucle) {
               bucle.apply(this, arguments);
             }
             el.removeEventListener('mouseup', escuchando, false);
           };
+
           el.addEventListener('mouseleave', escuchando ,false);
           el.addEventListener('mouseup', escuchando, false);
           clearInterval(intervalx);
           intervalx = setInterval(functionx, 100);
         }
+
         el.addEventListener('mousedown', eventx ,false);
 
       }
@@ -92,7 +95,10 @@ export default {
   },
   inheritAttrs:false,
   props:{
-    value:{},
+    value:{
+      default:null,
+      type:[Number,String]
+    },
     color:{
       default:'primary',
       type:String
@@ -169,6 +175,12 @@ export default {
         }
       }
     },
+    maxFloat () {
+      return parseFloat(this.max)
+    },
+    minFloat () {
+      return parseFloat(this.min)
+    },
     stepChange () {
       return this.step === 'any' ? 1 : parseFloat(this.step)
     }
@@ -183,27 +195,31 @@ export default {
   },
   methods:{
     plus(){
-      let newValue
       if(this.value === ''){
-        newValue = 0
-        this.$emit('input',this.fixPrecision(newValue))
-      } else  {
-        if(this.max?parseFloat(this.value)<parseFloat(this.max):true){
-          newValue = parseFloat(this.value) + this.stepChange
-          this.$emit('input',this.fixPrecision(newValue))
-        }
+        this.$emit('input', this.fixPrecision(0))
+        return
+      }
+
+      const valueFloat = parseFloat(this.value)
+
+      if(this.max ? valueFloat < this.maxFloat : true){
+        const newValue = valueFloat + this.stepChange
+
+        this.$emit('input', this.fixPrecision(newValue))
       }
     },
     less(){
-      let newValue
       if(this.value === ''){
-        newValue = 0
-        this.$emit('input',this.fixPrecision(newValue))
-      } else  {
-        if(this.min?parseFloat(this.value)>parseFloat(this.min):true){
-          newValue = parseFloat(this.value) - this.stepChange
-          this.$emit('input',this.fixPrecision(newValue))
-        }
+        this.$emit('input', this.fixPrecision(0))
+        return
+      }
+
+      const valueFloat = parseFloat(this.value)
+
+      if(this.min ? valueFloat > this.minFloat : true){
+        const newValue = valueFloat - this.stepChange
+
+        this.$emit('input', this.fixPrecision(newValue))
       }
     },
     fixPrecision(n) {
@@ -211,7 +227,7 @@ export default {
         return n;
       }
 
-      const precision = (this.step + '').split('.')[1];
+      const precision = `${this.step}`.split('.')[1];
       return n.toFixed(precision ? precision.length : 0);
     }
   }

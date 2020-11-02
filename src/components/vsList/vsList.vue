@@ -1,7 +1,7 @@
 <template lang="html">
   <div
     class="vs-list">
-    <slot/>
+    <slot />
   </div>
 </template>
 

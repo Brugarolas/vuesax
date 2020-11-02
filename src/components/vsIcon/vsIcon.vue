@@ -4,8 +4,7 @@
     :class="[iconPack, iconPack !='material-icons' ? icon : '',iconClass,getBg,getBgSize,{'round':round}]"
     v-bind="$attrs"
     class="vs-icon notranslate icon-scale"
-    v-on="$listeners"
-  >
+    v-on="$listeners">
     <slot>{{ iconPack == 'material-icons' ? icon : '' }}</slot>
   </i>
 </template>
@@ -51,10 +50,12 @@ export default {
       return classes
     },
     iconStyle() {
+      const isValidSize = /(px)|(em)/
+
       const style = {
-        width: /(px)/.test(this.size) ? this.size : /(em)/.test(this.size) ? this.size : null,
-        height: /(px)/.test(this.size) ? this.size : /(em)/.test(this.size) ? this.size : null,
-        'font-size': /(px)/.test(this.size) ? this.size : /(em)/.test(this.size) ? this.size : null,
+        width: isValidSize ? this.size : null,
+        height: isValidSize ? this.size : null,
+        'font-size': isValidSize ? this.size : null,
         color: this.getColor,
         background: this.getBgColor
       }

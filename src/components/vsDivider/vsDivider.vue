@@ -15,15 +15,14 @@
       class="vs-divider--text"
     >
       <template v-if="!icon">
-        <slot/>
+        <slot />
       </template>
 
       <vs-icon
         v-else
         :icon-pack="iconPack"
         :icon="icon"
-        class="icon-divider notranslate vs-divider--icon"
-      ></vs-icon>
+        class="icon-divider notranslate vs-divider--icon" />
     </span>
     <span
       :style="beforeStyle"
@@ -37,7 +36,7 @@
 import _color from '../../utils/color.js'
 
 export default {
-  name: "VsDivider",
+  name: 'VsDivider',
   props:{
     color:{
       type:String,
@@ -99,6 +98,8 @@ export default {
       if (!_color.isColor(this.color)) {
         return _color.getColor(this.color)
       }
+
+      return null
     },
     afterStyle() {
       const classes = {
@@ -124,7 +125,8 @@ export default {
     },
     borderClass() {
       const classes = {}
-      let borderColor = _color.isColor(this.color) ? this.color : 'default'
+      const borderColor = _color.isColor(this.color) ? this.color : 'default'
+
       classes[`vs-divider-border-${borderColor}`] = true
       return classes
     },
@@ -132,19 +134,22 @@ export default {
       if (!_color.isColor(this.color)) {
         return _color.getColor(this.color !== 'rgba(0, 0, 0,.1)' ? this.color : null)
       }
+
+      return null
     },
     backgroundColor() {
       if (!_color.isColor(this.background)) {
         return _color.getColor(this.background)
       }
+
+      return null
     },
     textAndBackgroundClass() {
       const classes = {}
+      const textColor = _color.isColor(this.color) ? this.color : 'default'
+      const backgroundColor = _color.isColor(this.background) ? this.background : 'default'
 
-      let textColor = _color.isColor(this.color) ? this.color : 'default'
       classes[`vs-divider-text-${textColor}`] = true
-
-      let backgroundColor = _color.isColor(this.background) ? this.background : 'default'
       classes[`vs-divider-background-${backgroundColor}`] = true
 
       return classes

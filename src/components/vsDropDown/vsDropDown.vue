@@ -1,5 +1,4 @@
 <template lang="html">
-  <!-- @contextmenu.capture.prevent -->
   <button
     ref="dropdown"
     v-bind="$attrs"
@@ -12,7 +11,7 @@
 
 <script>
 export default {
-  name: "VsDropdown",
+  name: 'VsDropdown',
   inheritAttrs:false,
   props:{
     vsTriggerClick:{
@@ -79,7 +78,12 @@ export default {
   },
   methods:{
     clickx(evt) {
-      let [dropdownMenu] = this.$children.filter(item => item.hasOwnProperty('dropdownVisible'))
+      const dropdownMenu = this.$children.find(item => item.hasOwnProperty('dropdownVisible'))
+
+      if (!dropdownMenu) {
+        return
+      }
+
       dropdownMenu.vsCustomContent = this.vsCustomContent
       dropdownMenu.vsTriggerClick = this.vsTriggerClick
       dropdownMenu.vsDropRight = this.vsDropRight
@@ -96,7 +100,8 @@ export default {
       }
     },
     changeColor() {
-      let child = this.$children
+      const child = this.$children
+
       child.forEach(item => {
         if(item.$vnode.tag.indexOf('dropdown') != -1) {
           item.color = this.color
@@ -104,7 +109,12 @@ export default {
       })
     },
     changePositionMenu() {
-      const [dropdownMenu] = this.$children.filter(item => item.hasOwnProperty('dropdownVisible'))
+      const dropdownMenu = this.$children.find(item => item.hasOwnProperty('dropdownVisible'))
+
+      if (!dropdownMenu) {
+        return
+      }
+
       const scrollTopx = window.pageYOffset || document.documentElement.scrollTop;
       const clientRect = this.$refs.dropdown.getBoundingClientRect()
       const menuWidth = dropdownMenu.$el.clientWidth
@@ -132,7 +142,13 @@ export default {
       if(evt.type == 'contextmenu') {
         evt.preventDefault()
       }
-      let [dropdownMenu] = this.$children.filter(item => item.hasOwnProperty('dropdownVisible'))
+
+      const dropdownMenu = this.$children.find(item => item.hasOwnProperty('dropdownVisible'))
+
+      if (!dropdownMenu) {
+        return
+      }
+
       if(this.vsTriggerClick || this.vsTriggerContextmenu) {
         if(this.vsDropdownVisible && !evt.target.closest('.vs-dropdown--menu')) {
           dropdownMenu.dropdownVisible = this.vsDropdownVisible = false
@@ -149,7 +165,12 @@ export default {
       this.$emit('click')
     },
     toggleMenu(typex, evt) {
-      let [dropdownMenu] = this.$children.filter(item => item.hasOwnProperty('dropdownVisible'))
+      const dropdownMenu = this.$children.find(item => item.hasOwnProperty('dropdownVisible'))
+
+      if (!dropdownMenu) {
+        return
+      }
+
       if(!this.vsTriggerClick && !this.vsTriggerContextmenu){
         if(typex == 'over'){
           dropdownMenu.dropdownVisible = this.vsDropdownVisible = true

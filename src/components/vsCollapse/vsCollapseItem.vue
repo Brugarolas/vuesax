@@ -1,13 +1,13 @@
 <template>
   <div
-    :class="{'open-item': maxHeight != '0px', 'disabledx': disabled}"
+    :class="{'open-item': maxHeight != '0', 'disabledx': disabled}"
     class="vs-collapse-item"
     @mouseover="mouseover"
     @mouseout="mouseout">
     <header
       class="vs-collapse-item--header"
       @click="toggleContent">
-      <slot name="header"></slot>
+      <slot name="header" />
       <span
         v-if="!notArrow"
         class="icon-header vs-collapse-item--icon-header">
@@ -22,19 +22,18 @@
       :style="styleContent"
       class="vs-collapse-item--content">
       <div class="con-content--item">
-        <slot/>
+        <slot />
       </div>
     </div>
   </div>
 </template>
 <script>
-
-import vsicon from '../vsIcon';
+import vsIcon from '../vsIcon';
 
 export default {
   name:'VsCollapseItem',
   components: {
-    vsicon
+    vsIcon
   },
   props:{
     open: {
@@ -63,7 +62,7 @@ export default {
     }
   },
   data:() => ({
-    maxHeight: '0px',
+    maxHeight: '0',
     // only used for sst
     dataReady: false
   }),
@@ -103,7 +102,7 @@ export default {
   methods:{
     changeHeight () {
       const maxHeightx = this.$refs.content.scrollHeight
-      if(this.maxHeight != '0px') {
+      if(this.maxHeight != '0') {
         this.maxHeight = `${maxHeightx}px`
       }
     },
@@ -127,22 +126,24 @@ export default {
     },
     initMaxHeight() {
       const maxHeightx = this.$refs.content.scrollHeight
-      if(this.maxHeight == '0px') {
+      if(this.maxHeight == '0') {
         this.maxHeight = `${maxHeightx}px`
       } else {
-        this.maxHeight = `0px`
+        this.maxHeight = '0'
       }
     },
     mouseover() {
       if(this.disabled) return
-      let maxHeightx = this.$refs.content.scrollHeight
+
+      const maxHeightx = this.$refs.content.scrollHeight
+
       if(this.openHover) {
         this.maxHeight = `${maxHeightx}px`
       }
     },
     mouseout() {
       if(this.openHover) {
-        this.maxHeight = `0px`
+        this.maxHeight = '0'
       }
     }
   }

@@ -20,16 +20,14 @@
         @click="$emit('update:active',false)">
         <vs-icon
           :icon-pack="iconPack"
-          :icon="closeIcon"
-        ></vs-icon>
+          :icon="closeIcon" />
       </div>
 
       <h4
         v-if="title"
         :style="styleTitle"
         class="titlex vs-alert--title"
-        v-text="title"
-      ></h4>
+        v-text="title" />
 
       <div
         :class="{'con-icon': icon}"
@@ -38,9 +36,8 @@
           v-if="icon"
           :icon-pack="iconPack"
           :icon="icon"
-          class="icon-alert"
-        ></vs-icon>
-        <slot/>
+          class="icon-alert" />
+        <slot />
       </div>
     </div>
   </transition>
@@ -103,8 +100,11 @@ export default {
   mounted () {
     if(this.$refs.alert) {
       this.$nextTick(() => {
-        let h = this.$refs.alert.scrollHeight
-        this.$refs.alert.style.height = h + 'px'
+        const alert = this.$refs.alert
+
+        if (alert) {
+          alert.style.height = `${alert.scrollHeight}px`
+        }
       })
     }
   },
@@ -113,14 +113,15 @@ export default {
       el.style.height = 0
       el.style.opacity = 0
     },
-    enter(el, done){
-      let h = this.$refs.alert.scrollHeight
-      this.$refs.alert.style.height = h + 'px'
+    enter(el, done) {
+      const alert = this.$refs.alert
+
+      alert.style.height = `${alert.scrollHeight}px`
       el.style.opacity = 1
       done()
     },
     leave(el) {
-      this.$refs.alert.style.height = 0 + 'px'
+      this.$refs.alert.style.height = 0
       el.style.opacity = 0
     }
   }

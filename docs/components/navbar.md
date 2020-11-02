@@ -62,7 +62,7 @@ To add a navbar we have the component `vs-navbar`, there is a series of sub comp
 ```html
 <template>
   <div>
-    <vs-navbar v-model="activeItem" class="nabarx">
+    <vs-navbar class="nabarx">
       <div slot="title">
         <vs-navbar-title>
           Hello world
@@ -81,13 +81,6 @@ To add a navbar we have the component `vs-navbar`, there is a series of sub comp
     </vs-navbar>
   </div>
 </template>
-<script>
-export default {
-  data:()=>({
-    activeItem: 0
-  })
-}
-</script>
 ```
 
 </div>
@@ -350,4 +343,3 @@ export default {
 </div>
 </vuecode>
 </box>
-

@@ -1,14 +1,5 @@
 <template>
-
   <div class="page">
-    <!-- <div class="color">
-      <div class="colorMover">
-
-      </div>
-    </div> -->
-
-    <!-- <div id="codefund_ad"></div> -->
-
     <transition name="contentx">
       <Content class="content-pagex" :custom="false"/>
     </transition>
@@ -35,7 +26,6 @@
             {{ next.title || next.path }}
             <vs-icon class="" icon="keyboard_arrow_right"></vs-icon>
           </router-link>
-
 
         </span>
       </p>
@@ -229,7 +219,7 @@ function find (page, items, offset) {
   display: block;
 }
 
-.content:not(.custom)
+.content__default
   display: block;
   position: relative;
   z-index: 200;
@@ -302,7 +292,7 @@ function find (page, items, offset) {
     i
       float: right;
 .page
-  .content
+  .content-pagex
     p
       padding: 10px;
       border-radius: 10px;

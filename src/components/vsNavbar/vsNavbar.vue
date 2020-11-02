@@ -8,19 +8,18 @@
         :class="{'active-menu' : activeMenuResponsive}"
         class="vs-navbar--btn-responsive"
         @click="activeMenuResponsive = !activeMenuResponsive">
-        <span class="btn-responsive-line line--1"/>
-        <span class="btn-responsive-line line--2"/>
-        <span class="btn-responsive-line line--3"/>
+        <span class="btn-responsive-line line--1" />
+        <span class="btn-responsive-line line--2" />
+        <span class="btn-responsive-line line--3" />
       </button>
 
-      <slot name="title">
-      </slot>
+      <slot name="title" />
     </div>
 
     <div
       :class="{'activeMenuResponsive' : activeMenuResponsive}"
       class="vs-con-items">
-      <slot></slot>
+      <slot />
     </div>
   </header>
 </template>
@@ -29,9 +28,7 @@
 import _color from '../../utils/color.js'
 export default {
   name:'VsNavbar',
-
   props:{
-    value:{},
     type:{
       default: null,
       type: String

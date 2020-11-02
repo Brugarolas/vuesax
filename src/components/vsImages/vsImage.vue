@@ -4,8 +4,7 @@
       <div
         :v-bind="$attrs"
         :style="styleImage"
-        class="vs-image--img">
-      </div>
+        class="vs-image--img" />
     </div>
     <img
       :src="src"

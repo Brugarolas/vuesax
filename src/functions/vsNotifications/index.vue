@@ -3,8 +3,7 @@
     name="noti"
     @before-enter="beforeEnter"
     @enter="enter"
-    @leave="leave"
-  >
+    @leave="leave">
     <div
       v-if="active"
       ref="noti"
@@ -14,21 +13,20 @@
       @click="clickNoti">
       <div class="content-noti">
         <div class="con-text-noti">
-          <h3 v-html="title"/>
-          <p v-html="text"/>
+          <h3 v-html="title" />
+          <p v-html="text" />
 
-          <slot/>
+          <slot />
         </div>
         <vs-icon
           v-if="icon"
           :icon="icon"
           :icon-pack="iconPack"
-          class="vs-icon-noti"
-        ></vs-icon>
+          class="vs-icon-noti" />
       </div>
       <span
         :style="fillingStyle"
-        class="filling"/>
+        class="filling" />
     </div>
   </transition>
 </template>
@@ -74,8 +72,8 @@ export default {
       return {
         ...this.cords,
         color: this.colorText,
-        width: this.fullWidth?`calc(100% - 14px)`:``,
-        maxWidth: this.fullWidth?'none':`350px`
+        width: this.fullWidth ? 'calc(100% - 14px)' : '',
+        maxWidth: this.fullWidth ? 'none': '350px'
       }
     }
   },
@@ -117,30 +115,31 @@ export default {
         transformx += ` translateX(${this.cords.left?'-':''}100%)`
       }
       el.style.transform = transformx
-      setTimeout( () => {
-        done()
+      setTimeout(() => {
         this.moverNotis()
+        done()
       }, 150);
     },
     closeNoti(){
       this.active = false
     },
     changeCords(){
-      let positions = this.position.split('-')
-      let search = (text) => {
-        return positions.indexOf(text)!=-1
+      const positions = this.position.split('-')
+      const search = (text) => {
+        return positions.includes(text)
       }
+
       if(search('top')){
-        this.cords.top = '0px'
+        this.cords.top = '0'
       }
       if(search('bottom')){
-        this.cords.bottom = '0px'
+        this.cords.bottom = '0'
       }
       if(search('right')){
-        this.cords.right = '0px'
+        this.cords.right = '0'
       }
       if(search('left')){
-        this.cords.left = '0px'
+        this.cords.left = '0'
       }
 
       if(search('center')) {
@@ -148,10 +147,11 @@ export default {
       }
     },
     moverNotis(){
-      let notisx = document.querySelectorAll('.vs-noti-'+this.position);
-      for (var i = 0; i < notisx.length; i++) {
+      const notisx = document.querySelectorAll(`.vs-noti-${this.position}`);
+
+      for (let i = 0; i < notisx.length; i++) {
         let hx = 10
-        for (var i2 = 0; i2 < i; i2++) {
+        for (let i2 = 0; i2 < i; i2++) {
           hx += notisx[i2].clientHeight + 6
         }
         if(this.position.search('center')==-1){

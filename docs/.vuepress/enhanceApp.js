@@ -1,7 +1,6 @@
 import './vuepress/index.styl'
 import Vuesax from '../../src'
-import Vuecode from 'viewcode/dist/vuecode.common.js'
-import 'viewcode/dist/vuecode.css'
+import Vuecode from './components/vuecode'
 import demo from './theme/demo.vue'
 import Box from './theme/box.vue'
 
@@ -13,9 +12,9 @@ export default ({
 }) => {
   // ...apply enhancements to the app
   Vue.use(Vuesax)
-  Vue.use(Vuecode,{
-    theme:'flat'
+  Vue.use(Vuecode, {
+    theme: 'flat'
   })
-  Vue.component('Demo',demo)
-  Vue.component('Box',Box)
+  Vue.component('Demo', demo)
+  Vue.component('Box', Box)
 }

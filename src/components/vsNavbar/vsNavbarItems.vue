@@ -1,6 +1,6 @@
 <template>
   <div class="vs-navbar--items">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 <script>

@@ -2,7 +2,7 @@
   <div
     :class="[type]"
     class="vs-collapse">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 <script>
@@ -27,10 +27,11 @@ export default {
       this.$emit('change')
     },
     closeAllItems(el) {
-      let children = this.$children
+      const children = this.$children
+
       children.map((item) => {
         if(item.$el !== el) {
-          item.maxHeight = '0px'
+          item.maxHeight = '0'
         }
       })
     }

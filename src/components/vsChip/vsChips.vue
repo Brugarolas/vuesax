@@ -3,12 +3,11 @@
     <div
       :class="{'no-items':value.length == 0}"
       class="con-chips">
-      <slot>
-      </slot>
+      <slot />
 
       <input
-        :placeholder="value.length > 0 ? null : placeholder"
         v-model="newChip"
+        :placeholder="value.length > 0 ? null : placeholder"
         type="text"
         class="con-chips--input"
         @keypress.enter="addItem">
@@ -17,22 +16,19 @@
         @click="removeTotalItems">
         <vs-icon
           :icon-pack="iconPack"
-          :icon="removeIcon"
-        ></vs-icon>
+          :icon="removeIcon" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import vsChip from './vsChip.vue'
 export default {
   name:'VsChips',
-  components:{
-    vsChip
-  },
   props:{
-    value:{},
+    value:{
+      type: Array
+    },
     vsColor:{
       type:String,
       default:'primary',
@@ -54,18 +50,19 @@ export default {
     },
   },
   data: () => ({
-    newChip:'',
-    chip1:true,
+    newChip:''
   }),
   methods:{
     addItem(){
-      let valueOld = this.value
+      const valueOld = this.value
+
       valueOld.push(this.newChip)
       this.$emit('input', valueOld)
       this.newChip = ''
     },
     removeTotalItems(){
-      let valueOld = this.value
+      const valueOld = this.value
+
       valueOld.splice(0, this.value.length);
       this.$emit('input', valueOld)
     }

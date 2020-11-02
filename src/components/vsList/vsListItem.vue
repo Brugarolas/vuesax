@@ -2,16 +2,15 @@
   <div class="vs-list--item">
     <div
       v-if="$slots.avatar"
-      class="vs-list--avatar"
-    >
-      <slot name="avatar"/>
+      class="vs-list--avatar">
+      <slot name="avatar" />
     </div>
     <div
       v-if="icon"
       class="vs-list--icon">
       <vs-icon
         :icon-pack="iconPack"
-        :icon="icon"></vs-icon>
+        :icon="icon" />
     </div>
     <div class="list-titles">
       <div
@@ -26,10 +25,10 @@
         class="vs-list--subtitle">{{ subtitle }}</div>
       <slot
         v-else
-        name="subtitle"/>
+        name="subtitle" />
     </div>
     <div class="vs-list--slot">
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>

@@ -15,10 +15,9 @@
       v-bind="$attrs"
       :class="{'disabled':disabled}"
       class="vs-dropdown--item-link"
-      v-on="$listeners"
-    >
+      v-on="$listeners">
       {{ $attrs.disabled }}
-      <slot/>
+      <slot />
     </router-link>
 
     <a
@@ -26,9 +25,8 @@
       v-bind="$attrs"
       :class="{'disabled':disabled}"
       class="vs-dropdown--item-link"
-      v-on="$listeners"
-    >
-      <slot/>
+      v-on="$listeners">
+      <slot />
     </a>
   </li>
 </template>
@@ -36,10 +34,12 @@
 <script>
 import _color from '../../utils/color.js'
 export default {
-  name: "VsDropdownItem",
+  name: 'VsDropdownItem',
   inheritAttrs:false,
   props:{
-    to:{},
+    to:{
+      type: [String, Object]
+    },
     disabled:{
       default:false,
       type:Boolean
@@ -63,34 +63,41 @@ export default {
   methods:{
     closeParent() {
       if(this.disabled) return
-      searchParent(this)
+
       function searchParent(_this) {
-        let parent = _this.$parent
+        const parent = _this.$parent
+
         if(!parent.$el.className) return
-        if(parent.$el.className.indexOf('parent-dropdown') == -1) {
+        if(parent.$el.className.includes('parent-dropdown')) {
           searchParent(parent)
         } else {
-          let [dropdownMenu] = parent.$children.filter(item => {
+          const dropdownMenu = parent.$children.find(item => {
             return item.hasOwnProperty('dropdownVisible')
           })
-          dropdownMenu.dropdownVisible = parent.vsDropdownVisible = false
+
+          if (dropdownMenu) {
+            dropdownMenu.dropdownVisible = parent.vsDropdownVisible = false
+          }
         }
       }
+
+      searchParent(this)
     },
     changeColor() {
-      let _self = this
-      searchParent(this)
       function searchParent(_this){
-        let parent = _this.$parent
+        const parent = _this.$parent
+
         if(!parent.$el.className){
           return
         }
         if(parent.$el.className.indexOf('parent-dropdown') == -1) {
           searchParent(parent)
         } else {
-          _self.color = parent.color
+          _this.color = parent.color
         }
       }
+
+      searchParent(this)
     },
     giveColor(opacity = 1) {
       return _color.rColor(this.color,opacity)

@@ -20,8 +20,7 @@
       v-if="!is('line')&&!is('gradient')&&!is('relief')"
       ref="backgroundx"
       :style="stylesBackGround"
-      class="vs-button-backgroundx vs-button--background">
-    </span>
+      class="vs-button-backgroundx vs-button--background" />
 
     <vs-icon
       v-if="icon"
@@ -32,8 +31,7 @@
       }"
       :icon-pack="iconPack"
       :icon="icon"
-      class="vs-button--icon"
-    ></vs-icon>
+      class="vs-button--icon" />
 
     <span
       v-if="$slots.default"
@@ -52,44 +50,44 @@
 <script>
 import _color from '../../utils/color.js'
 export default {
-  name:'VsButton',
-  inheritAttrs:false,
-  props:{
-    type:{
-      default:'filled',
-      type:String
-    },
-    color:{
-      default:'primary',
-      type:String
-    },
-    textColor:{
-      default:null,
-      type:String
-    },
-    lineOrigin:{
-      default:'center',
-      type:String
-    },
-    linePosition:{
-      default:'bottom',
-      type:String
-    },
-    gradientDirection:{
-      default:'30deg',
-      type:String
-    },
-    gradientColorSecondary:{
-      default:'primary',
-      type:String
-    },
-    size:{
-      type:String,
-      default:null,
-    },
-    icon:{
-      type:String,
-      default:null
+	name:'VsButton',
+	inheritAttrs:false,
+	props:{
+		type:{
+			default:'filled',
+			type:String
+		},
+		color:{
+			default:'primary',
+			type:String
+		},
+		textColor:{
+			default:null,
+			type:String
+		},
+		lineOrigin:{
+			default:'center',
+			type:String
+		},
+		linePosition:{
+			default:'bottom',
+			type:String
+		},
+		gradientDirection:{
+			default:'30deg',
+			type:String
+		},
+		gradientColorSecondary:{
+			default:'primary',
+			type:String
+		},
+		size:{
+			type:String,
+			default:null,
+		},
+		icon:{
+			type:String,
+			default:null
     },
     iconPack:{
       type:String,
@@ -158,19 +156,21 @@ export default {
       if (this.is('line')) {
         return {
           color:_color.getColor(this.textColor, 1) || _color.getColor(this.color, 1),
-          borderBottomWidth: this.linePosition == 'bottom' ? `2px` : null,
+          borderBottomWidth: this.linePosition == 'bottom' ? '2px' : null,
           borderColor: `${_color.getColor(this.color, .2)}`,
-          borderTopWidth: this.linePosition == 'top' ? `2px` : null,
+          borderTopWidth: this.linePosition == 'top' ? '2px' : null,
         }
       }
       if (this.is('gradient')) {
-        let backgroundx = `linear-gradient(${this.gradientDirection}, ${_color.getColor(this.color)} 0%, ${_color.getColor(this.gradientColorSecondary, 1)} 100%)`
+        const backgroundx = `linear-gradient(${this.gradientDirection}, ${_color.getColor(this.color)} 0%, ${_color.getColor(this.gradientColorSecondary, 1)} 100%)`
+
         return {
           background: backgroundx,
         }
       }
       if (this.is('relief')) {
-        let color = _color.getColor(this.color, 1)
+        const color = _color.getColor(this.color, 1)
+
         return {
           background: _color.getColor(this.color, 1),
           boxShadow: `0 3px 0 0 ${_color.darken(color, -0.4)}`
@@ -179,7 +179,7 @@ export default {
       return null
     },
     stylesBackGround(){
-      let styles = {
+      const styles = {
         background: this.is('flat') || this.is('border') ? _color.getColor(this.color, 1, false) : null,
         opacity: this.opacity,
         left: `${this.leftBackgorund}px`,
@@ -200,7 +200,7 @@ export default {
         lineOrigin = 'auto'
       }
 
-      let styles = {
+      const styles = {
         top: this.linePosition == 'top' ? '-2px' : 'auto',
         bottom: this.linePosition == 'bottom' ? '-2px' : 'auto',
         background: _color.getColor(this.color, 1),
@@ -226,11 +226,10 @@ export default {
       }
     },
     routerPush() {
-      this.$router.push(this.to).catch(err => { this.$emit("route-error", err) })
+      this.$router.push(this.to).catch(err => { this.$emit('route-error', err) })
     },
     is(which){
-      let type = this.type
-      return type == which
+      return this.type == which
     },
     mouseoverx(event){
       this.$emit('mouseover', event)
@@ -283,9 +282,10 @@ export default {
           this.isActive = true
         }
 
+        const radio = btn.clientWidth * 3
         let xEvent = event.offsetX
         let yEvent = event.offsetY
-        let radio = btn.clientWidth * 3
+
         this.time  = btn.clientWidth / (btn.clientWidth + (this.is('border') || this.is('flat') ? 70 : 20))
         if(this.is('filled')){
           this.timeOpacity = this.time
@@ -295,9 +295,11 @@ export default {
           xEvent += event.target.offsetLeft
           yEvent += event.target.offsetTop
         }
+
         this.leftBackgorund = xEvent
         this.topBackgorund = yEvent
         this.radio = radio
+
         if(this.is('filled')){
           this.opacity = 0
         } else {

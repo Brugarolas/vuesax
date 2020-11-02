@@ -6,28 +6,26 @@
     aria-label="breadcrumb"
     v-on="$listeners">
     <ol class="vs-breadcrumb--ol">
-      <slot/>
+      <slot />
       <li
-        v-for="item in items"
+        v-for="item in breadcrumItems"
         v-show="!hasSlot"
         :key="item.title"
         :class="{'vs-active':item.active,'disabled-link':item.disabled}"
-        :aria-current="item.active ? 'page' : null"
-      >
+        :aria-current="item.active ? 'page' : null">
         <a
           v-if="!item.active"
           :href="item.url ? item.url : '#'"
           :title="item.title"
           class="vs-breadcrumb--link"
-          v-text="item.title"
-        ></a>
+          v-text="item.title" />
+
         <template v-else>
           <span
             :class="textClass"
             :style="textStyle"
             class="vs-breadcrumb--text"
-            v-text="item.title"
-          ></span>
+            v-text="item.title" />
         </template>
         <span
           v-if="!item.active"
@@ -35,8 +33,7 @@
           class="separator notranslate vs-breadcrum--separator"
           translate="no"
           aria-hidden="true"
-          v-text="separator"
-        ></span>
+          v-text="separator" />
       </li>
     </ol>
   </nav>
@@ -80,13 +77,11 @@ export default {
       return style
     },
     hasSlot () {
-      return !!this.$slots.default
-    }
-  },
-  created() {
-    if(this.items) {
-      this.items = this.items.map(item => {
-        if (typeof item.title === "function") {
+      return Boolean(this.$slots.default)
+    },
+    breadcrumItems () {
+      return this.items.map(item => {
+        if (typeof item.title === 'function') {
           return {
             ...item,
             title: item.title(this.$route.params)
