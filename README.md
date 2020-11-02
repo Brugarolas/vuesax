@@ -176,11 +176,11 @@ Vue.use(vsPopup)
 ```
 
 ## Contribution
-Please make sure to read the [Contributing Guide](https://raw.githubusercontent.com/lusaxweb/vuesax/master/CONTRIBUTING.md) before making a pull request.
+Please make sure to read the [Contributing Guide]https://raw.githubusercontent.com/Brugarolas/vuesax/master/CONTRIBUTING.md) before making a pull request.
 
-## Lusaxweb
+## Brugarolas
 
-This library was created and is supported by [Lusaxweb](http://lusaxweb.net/)
+This library was created by [Lusaxweb](https://lusaxweb.net) and is supported by [Brugarolas](https://brugarolas.github.io/)
 
 ## License
 

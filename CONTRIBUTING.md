@@ -2,7 +2,7 @@
 
 Hello! I am very excited that you are interested in contributing with Vuesax. However, before submitting your contribution, be sure to take a moment and read the following guidelines.
 
-- [Code of Conduct](https://github.com/lusaxweb/vuesax/blob/master/CODE_OF_CONDUCT.md)
+- [Code of Conduct](https://raw.githubusercontent.com/Brugarolas/vuesax/master/CONTRIBUTING.md)
 - [Extraction request guidelines](#pull-request-guidelines)
 - [Development Setup](#development-setup)
 
@@ -22,7 +22,7 @@ Hello! I am very excited that you are interested in contributing with Vuesax. Ho
   
 ## Development Setup
 
-- You will need Node.js version 6+.
+- You will need Node.js version 10.13+.
 - You will need [Vuepress](https://vuepress.vuejs.org/) installed globally.
 
 After cloning the repository, execute:

@@ -104,8 +104,8 @@ Also, please check the available icons from the following.
 
 <box>
 
-## Lusaxweb
+## Brugarolas
 
-This library was created and is supported by [Lusaxweb](https://lusaxweb.net)
+This library was created by [Lusaxweb](https://lusaxweb.net) and is supported by [Brugarolas](https://brugarolas.github.io/)
 
 </box>

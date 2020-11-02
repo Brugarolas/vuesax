@@ -1,6 +1,5 @@
 <template>
   <nav class="nav-links" v-if="userLinks.length || repoLink">
-    <!-- user links -->
     <div
       class="nav-item"
       v-for="item in userLinks"
@@ -8,16 +7,6 @@
       <DropdownLink v-if="item.type === 'links'" :item="item"/>
       <NavLink v-else :item="item"/>
     </div>
-
-    <!-- repo link -->
-    <!-- <a v-if="repoLink"
-      :href="repoLink"
-      class="repo-link flaticon-github"
-      target="_blank"
-      rel="noopener noreferrer">
-      <! {{ repoLabel }} -->
-       <!-- <OutboundLink/> -->
-    <!-- </a> -->
   </nav>
 </template>
 
@@ -139,7 +128,6 @@ export default {
     position relative
     display inline-block
     margin-left .4rem
-    font-weight 500
     // line-height 2rem
     position: relative
   .github-link

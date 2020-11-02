@@ -406,7 +406,7 @@ export default {
     h1
       font-size 3rem
       color: $textColor
-      font-weight: lighter;
+      font-weight: 300;
       font-size: 40px;
     h1, .description, .action
       // margin 1.8rem auto
