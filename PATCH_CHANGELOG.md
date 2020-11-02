@@ -1,10 +1,10 @@
 ## [3.12.2-patch-4] Unreleased
 ## Changed
 - Updated some dependencies
+- Fixed component linter errors and some small refactors
 ## Removed
 - Postinstall.js and chalk dependency
 ## Fixed
-- Some VsButton lint errors
 - Fixed another bug on VsButton $nexTick()
 - Fixed bug on VsDropDown when event.relatedTarget is null
 
