@@ -18,13 +18,13 @@
       <span
         :style="styleLineOne"
         :class="{'hasTransition':effect}"
-        class="vs-slider-line-one"></span>
-      <span class="vs-slider-line-two"></span>
+        class="vs-slider-line-one" />
+      <span class="vs-slider-line-two" />
 
       <span
         :class="{'run-effect':effect}"
         :style="styleEfect"
-        class="vs-slider-line-efect"></span>
+        class="vs-slider-line-efect" />
 
       <!-- vsTicks -->
       <span
@@ -32,8 +32,7 @@
         v-if="ticks&&tick"
         :class="{'isEnd':index == countTicks-1}"
         :style="styleTicks(index)"
-        class="vs-slider--tick">
-      </span>
+        class="vs-slider--tick" />
     </button>
     <button
       ref="circle1"
@@ -59,7 +58,7 @@
         <vs-icon
           :icon-pack="iconPack"
           :icon="icon"
-        ></vs-icon>
+        />
       </span>
 
     </button>
@@ -99,9 +98,9 @@
 </template>
 
 <script>
-import _color from "../../utils/color.js";
+import _color from '../../utils/color.js';
 export default {
-  name: "VsSlider",
+  name: 'VsSlider',
   props: {
     value: {},
     disabled: {
@@ -109,7 +108,7 @@ export default {
       type: [Boolean, String]
     },
     color: {
-      default: "primary",
+      default: 'primary',
       type: String
     },
     max: {
@@ -138,7 +137,7 @@ export default {
       type: String
     },
     iconPack: {
-      default: "material-icons",
+      default: 'material-icons',
       type: String
     },
     textFixed: {
@@ -217,7 +216,7 @@ export default {
       setTimeout(() => {
         this.changeValue = false;
       }, 300);
-      this.$emit("change", this.value);
+      this.$emit('change', this.value);
     },
     leftx() {
       if (Array.isArray(this.value)) {
@@ -255,7 +254,7 @@ export default {
             val = this.max;
           }
           this.leftx = val;
-          this.$emit("input", val);
+          this.$emit('input', val);
         } else {
           let val = parseFloat(this.value) - parseFloat(this.step);
           val = this.stepDecimals ? this.toDecimal(val) : Math.round(val);
@@ -263,7 +262,7 @@ export default {
             val = this.min;
           }
           this.leftx = val;
-          this.$emit("input", val);
+          this.$emit('input', val);
         }
       }
     },
@@ -275,7 +274,7 @@ export default {
           val = this.min;
         }
         this.leftx = val;
-        this.$emit("input", val);
+        this.$emit('input', val);
       }
     },
     keydownRight() {
@@ -286,7 +285,7 @@ export default {
           val = this.max;
         }
         this.leftx = val;
-        this.$emit("input", val);
+        this.$emit('input', val);
       }
     },
     changePosition() {
@@ -299,25 +298,25 @@ export default {
       }
     },
     styleTicks(index) {
-      let lengthPerStep = 100 / ((this.max - this.min) / this.step);
-      let steps = index / lengthPerStep;
+      const lengthPerStep = 100 / ((this.max - this.min) / this.step);
+      const steps = index / lengthPerStep;
       return {
-        left: steps * lengthPerStep + "%"
+        left: `${steps * lengthPerStep  }%`
       };
     },
     activeFocus() {
-      window.addEventListener("mousemove", this.mouseMovex);
-      window.addEventListener("mouseup", this.removeEvents);
-      window.addEventListener("touchmove", this.mouseMovex);
-      window.addEventListener("touchend", this.removeEvents);
+      window.addEventListener('mousemove', this.mouseMovex);
+      window.addEventListener('mouseup', this.removeEvents);
+      window.addEventListener('touchmove', this.mouseMovex);
+      window.addEventListener('touchend', this.removeEvents);
     },
     mouseMovex(evt) {
-      let slider = this.$refs.slider;
+      const slider = this.$refs.slider;
       let leftx;
       /*
        * change position left circle and bar
        */
-      if (evt.type == "touchmove") {
+      if (evt.type == 'touchmove') {
         leftx =
           event.targetTouches[0].clientX - slider.getBoundingClientRect().left;
       } else {
@@ -334,19 +333,19 @@ export default {
     },
     removeEvents() {
       this.two = this.actived = false;
-      window.removeEventListener("mouseup", this.removeEvents);
-      window.removeEventListener("mousemove", this.mouseMovex);
-      window.removeEventListener("touchmove", this.mouseMovex);
-      window.removeEventListener("touchend", this.removeEvents);
+      window.removeEventListener('mouseup', this.removeEvents);
+      window.removeEventListener('mousemove', this.mouseMovex);
+      window.removeEventListener('touchmove', this.mouseMovex);
+      window.removeEventListener('touchend', this.removeEvents);
     },
     clickSlider(evt) {
-      let slider = this.$refs.slider;
-      let leftx = evt.clientX - slider.getBoundingClientRect().left;
+      const slider = this.$refs.slider;
+      const leftx = evt.clientX - slider.getBoundingClientRect().left;
       this.effect = true;
       setTimeout(() => {
         this.effect = false;
       }, 200);
-      let percentX = Math.round((leftx / slider.clientWidth) * 100);
+      const percentX = Math.round((leftx / slider.clientWidth) * 100);
 
       if (Array.isArray(this.value)) {
         if (
@@ -361,8 +360,8 @@ export default {
       this.changeLeft(leftx);
     },
     changeLeft(leftx) {
-      let slider = this.$refs.slider;
-      let percentX = (leftx / slider.clientWidth) * 100;
+      const slider = this.$refs.slider;
+      const percentX = (leftx / slider.clientWidth) * 100;
 
       const lengthPerStep = 100 / ((this.max - this.min) / this.step);
       const steps = Math.round(percentX / lengthPerStep);
@@ -371,9 +370,9 @@ export default {
 
       if (val > this.max) {
         val = this.max;
-        this[this.two ? "leftTwo" : "leftx"] = 100;
+        this[this.two ? 'leftTwo' : 'leftx'] = 100;
       } else {
-        this[this.two ? "leftTwo" : "leftx"] = steps * lengthPerStep;
+        this[this.two ? 'leftTwo' : 'leftx'] = steps * lengthPerStep;
       }
 
       if (Array.isArray(this.value)) {
@@ -381,30 +380,30 @@ export default {
         if (val == this.max) {
           valueNew = this.max;
         }
-        let vals = this.value;
-        let min =
+        const vals = this.value;
+        const min =
           Math.round((this.leftTwo / 100) * (this.max / this.step)) * this.step;
-        let max =
+        const max =
           Math.round((this.leftx / 100) * (this.max / this.step)) * this.step;
         if (this.two) {
           if (min < max) {
-            this.$emit("input", [valueNew, vals[1]]);
+            this.$emit('input', [valueNew, vals[1]]);
           } else if (min > max) {
-            this.$emit("input", [vals[0], valueNew]);
+            this.$emit('input', [vals[0], valueNew]);
           } else {
-            this.$emit("input", [valueNew, valueNew]);
+            this.$emit('input', [valueNew, valueNew]);
           }
         } else {
           if (min > max) {
-            this.$emit("input", [valueNew, vals[1]]);
+            this.$emit('input', [valueNew, vals[1]]);
           } else if (min < max) {
-            this.$emit("input", [vals[0], valueNew]);
+            this.$emit('input', [vals[0], valueNew]);
           } else {
-            this.$emit("input", [valueNew, valueNew]);
+            this.$emit('input', [valueNew, valueNew]);
           }
         }
       } else {
-        this.$emit("input", val);
+        this.$emit('input', val);
       }
     },
     toDecimal(value) {

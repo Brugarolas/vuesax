@@ -22,27 +22,27 @@
       ref="on"
       :class="{'active-text':isChecked || $attrs.checked}"
       class="text-on text-switch vs-switch--text">
-      <slot name="on"/>
+      <slot name="on" />
 
       <vs-icon
         :icon-pack="iconPack"
         :icon="vsIconOn || vsIcon"
         class="icons-switch vs-switch--icon"
-      ></vs-icon>
+      />
     </span>
     <span
       ref="off"
       :class="{'active-text':!isChecked && !$attrs.checked}"
       class="text-off text-switch vs-switch--text">
       <!-- gato con botas -->
-      <slot name="off"/>
+      <slot name="off" />
       <vs-icon
         :icon-pack="iconPack"
         :icon="vsIconOff || vsIcon"
         class="icons-switch vs-switch--icon"
-      ></vs-icon>
+      />
     </span>
-    <span class="vs-circle-switch vs-switch--circle"/>
+    <span class="vs-circle-switch vs-switch--circle" />
   </button>
 </template>
 
@@ -100,7 +100,7 @@ export default {
   },
   mounted(){
     this.$nextTick(()=>{
-      let w = this.$refs.on.clientWidth>this.$refs.off.clientWidth?this.$refs.on.clientWidth:this.$refs.off.clientWidth
+      const w = this.$refs.on.clientWidth>this.$refs.off.clientWidth?this.$refs.on.clientWidth:this.$refs.off.clientWidth
       this.widthx = w + 24
     })
 
@@ -128,8 +128,8 @@ export default {
       }
     },
     isArrayIncludes(){
-      let modelx = this.value
-      let value = this.vsValue
+      const modelx = this.value
+      const value = this.vsValue
       return modelx.includes(value)
     },
     isArrayx(){

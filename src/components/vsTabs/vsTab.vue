@@ -3,7 +3,7 @@
     <div
       v-if="active"
       class="con-tab vs-tabs--content">
-      <slot/>
+      <slot />
     </div>
   </transition>
 </template>

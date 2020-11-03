@@ -6,7 +6,7 @@ import vuesaxOptions from './utils/options'
 
 const install = (Vue, options={}) => {
   // set default options
-  for(let prop in vuesaxOptions) {
+  for(const prop in vuesaxOptions) {
     if(!options[prop]) {
       options[prop] = vuesaxOptions[prop]
     }

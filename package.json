@@ -27,7 +27,7 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "serve": "vue-cli-service serve --target lib src/index.js --open",
-    "serve:no-linter": "vue-cli-service serve --target lib src/index.js --open --skip-plugins @vue/cli-plugin-eslint --max-errors Infinity",
+    "serve:no-linter": "vue-cli-service serve --target lib src/index.js --open --skip-plugins @vue/cli-plugin-eslint",
     "build": "mkdir dist || vue-cli-service build --target lib src/index.js --name vuesax",
     "build:no-linter": " mkdir dist || vue-cli-service build --target lib src/index.js --name vuesax --skip-plugins @vue/cli-plugin-eslint --max-errors Infinity",
     "lint": "vue-cli-service lint",

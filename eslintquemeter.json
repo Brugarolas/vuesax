@@ -1,0 +1,26 @@
+"no-multi-spaces": "warn",
+"space-after-keywords": "warn",
+"keyword-spacing": ["warn", {
+  "before": true,
+  "after": true
+}],
+"key-spacing": ["warn", {
+  "beforeColon": false,
+  "afterColon": true,
+  "mode": "strict",
+}],
+"space-before-blocks": ["warn", "always"],
+"space-in-parens": ["warn", "never"],
+"space-unary-ops": ["warn", { "words": true, "nonwords": false }],
+"computed-property-spacing": ["warn", "never"],
+"no-whitespace-before-property": "warn",
+"comma-spacing": ["warn", {
+  "before": false,
+  "after": true
+}],
+comma-style: ["warn", "last"],
+"object-curly-spacing": ["warn", "always", {
+  "arraysInObjects": false,
+  "objectsInObjects": false
+}],
+"indent": ["error", "tab"],

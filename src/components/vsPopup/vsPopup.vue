@@ -8,7 +8,7 @@
       @click="close($event,true)">
       <div
         :style="styleCon"
-        class="vs-popup--background"/>
+        class="vs-popup--background" />
       <div
         ref="popupx"
         :style="stylePopup"
@@ -38,7 +38,7 @@
           :style="styleContent"
           :class="classContent"
           class="vs-popup--content">
-          <slot/>
+          <slot />
         </div>
       </div>
     </div>
@@ -122,7 +122,7 @@ export default {
   },
   beforeDestroy() {
     // close the left open prompt
-    let elx = this.$refs.con
+    const elx = this.$refs.con
     if (document.body) {
       document.body.removeChild(elx)
     }
@@ -145,7 +145,7 @@ export default {
       }
     },
     insertBody(){
-      let elx = this.$refs.con
+      const elx = this.$refs.con
       document.body.insertBefore(elx, document.body.firstChild)
     },
   }

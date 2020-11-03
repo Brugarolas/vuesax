@@ -37,7 +37,7 @@
         :icon-pack="iconPack"
         :icon="icon"
         class="icon-select vs-select--icon"
-      ></vs-icon>
+      />
 
       <transition name="fadeselect">
         <div
@@ -47,10 +47,10 @@
           :class="[`vs-select-${color}`,{'scrollx':scrollx}]"
           class="vs-select--options">
           <ul ref="ulx">
-            <slot/>
+            <slot />
           </ul>
           <ul v-show="clear">
-            <li @click="filterItems(''),changeValue()" >
+            <li @click="filterItems(''),changeValue()">
               {{ noData }}
             </li>
           </ul>
@@ -108,13 +108,13 @@
 </template>
 
 <script>
-import utils from "../../utils";
+import utils from '../../utils';
 export default {
-  name: "VsSelect",
+  name: 'VsSelect',
   props: {
     value: {},
     noData: {
-      default: "No data available",
+      default: 'No data available',
       type: String
     },
     maxSelected: {
@@ -126,7 +126,7 @@ export default {
       type: Boolean
     },
     color: {
-      default: "primary",
+      default: 'primary',
       type: String
     },
     multiple: {
@@ -166,15 +166,15 @@ export default {
       type: String
     },
     iconPack: {
-      default: "material-icons",
+      default: 'material-icons',
       type: String
     },
     icon: {
-      default: "keyboard_arrow_down",
+      default: 'keyboard_arrow_down',
       type: String
     },
     iconClear: {
-      default: "close",
+      default: 'close',
       type: String
     },
     width: {
@@ -183,9 +183,9 @@ export default {
     }
   },
   data: () => ({
-    valueFilter: "",
+    valueFilter: '',
     active: false,
-    valuex: "",
+    valuex: '',
     clear: false,
     scrollx: false,
     cords: {},
@@ -207,15 +207,15 @@ export default {
         blur: event => {
           if (
             this.autocomplete && event.relatedTarget
-              ? !event.relatedTarget.closest(".vs-select--options")
+              ? !event.relatedTarget.closest('.vs-select--options')
               : false
           ) {
             this.closeOptions();
           }
-          this.$emit("blur", event);
+          this.$emit('blur', event);
         },
         focus: event => {
-          this.$emit("focus", event);
+          this.$emit('focus', event);
           if (event.keyCode ? event.keyCode : event.which) {
             this.focus();
           }
@@ -225,16 +225,16 @@ export default {
         },
         input: event => {
           if (this.autocomplete) {
-            this.$emit("input-change", event);
+            this.$emit('input-change', event);
           }
         },
         keyup: event => {
-          if (event.key == "ArrowDown" || event.key == "ArrowUp") {
+          if (event.key == 'ArrowDown' || event.key == 'ArrowUp') {
             event.preventDefault();
-            let childrens = this.$children.filter(item => {
+            const childrens = this.$children.filter(item => {
               return item.visible;
             });
-            childrens[0].$el.querySelector(".vs-select--item").focus();
+            childrens[0].$el.querySelector('.vs-select--item').focus();
           } else {
             if (this.autocomplete) {
               this.filterItems(event.target.value);
@@ -251,7 +251,7 @@ export default {
   watch: {
     value(event) {
       this.valuex = this.value;
-      this.$emit("change", event);
+      this.$emit('change', event);
     },
     active() {
       this.$nextTick(() => {
@@ -266,7 +266,7 @@ export default {
             if (this.$refs.ulx.scrollHeight >= 260) this.scrollx = true;
           }, 100);
         } else {
-          let [parent] = document.getElementsByTagName("body");
+          const [parent] = document.getElementsByTagName('body');
           parent.removeChild(this.$refs.vsSelectOptions);
         }
       });
@@ -280,7 +280,7 @@ export default {
     }
   },
   beforeDestroy() {
-    let [parent] = document.getElementsByTagName("body");
+    const [parent] = document.getElementsByTagName('body');
 
     if (this.active) {
       this.closeOptions();
@@ -301,14 +301,14 @@ export default {
   methods: {
     clearValue() {
       this.focus();
-      this.filterItems("");
+      this.filterItems('');
       this.changeValue();
     },
     addMultiple(value) {
-      let currentValues = this.value ? this.value : [];
+      const currentValues = this.value ? this.value : [];
       if (currentValues.includes(value)) {
         currentValues.splice(currentValues.indexOf(value), 1);
-        this.$emit("input", currentValues);
+        this.$emit('input', currentValues);
         this.changeValue();
         if (this.autocomplete) {
           this.$refs.inputselect.focus();
@@ -316,14 +316,14 @@ export default {
       } else {
         if (this.autocomplete) {
           currentValues.push(value);
-          this.$emit("input", currentValues);
-          this.filterItems("");
+          this.$emit('input', currentValues);
+          this.filterItems('');
           this.changeValue();
           // this.$refs.inputselect.value += ','
           this.$refs.inputselect.focus();
         } else {
           currentValues.push(value);
-          this.$emit("input", currentValues);
+          this.$emit('input', currentValues);
           this.changeValue();
         }
       }
@@ -343,12 +343,12 @@ export default {
       });
 
       items.map(item => {
-        if (!("text" in item)) return;
+        if (!('text' in item)) return;
 
-        let text = item.text;
+        const text = item.text;
 
         if (this.multiple) {
-          let valuesx = value.split(",");
+          const valuesx = value.split(',');
           valuesx.forEach(value_multi => {
             if (text.toUpperCase().indexOf(value_multi.toUpperCase()) == -1) {
               item.visible = false;
@@ -365,7 +365,7 @@ export default {
         }
       });
 
-      let lengthx = items.filter(item => {
+      const lengthx = items.filter(item => {
         return item.visible;
       });
 
@@ -382,7 +382,7 @@ export default {
     changeValue() {
       this.filterx = false;
       if (this.multiple) {
-        let values = this.value ? this.value : [];
+        const values = this.value ? this.value : [];
         let options = this.$children;
 
         options.forEach(item => {
@@ -391,12 +391,12 @@ export default {
           }
         });
 
-        let optionsValues = [];
+        const optionsValues = [];
         values.forEach(item => {
           options.forEach(item_option => {
             if (item_option.value == item) {
               let text = item_option.text;
-              text = text.replace("check_circle", "");
+              text = text.replace('check_circle', '');
               optionsValues.push(text.trim());
             }
           });
@@ -412,11 +412,11 @@ export default {
       this.active = true;
       document.addEventListener('click', this.clickBlur);
       this.setLabelClass(this.$refs.inputSelectLabel, true);
-      let inputx = this.$refs.inputselect;
+      const inputx = this.$refs.inputselect;
       if (this.autocomplete && this.multiple) {
         setTimeout(() => {
           if (inputx.value) {
-            this.$refs.inputselect.value = inputx.value += ",";
+            this.$refs.inputselect.value = inputx.value += ',';
           }
           inputx.selectionStart = inputx.selectionEnd = 10000;
         }, 10);
@@ -429,7 +429,7 @@ export default {
           this.multiple ? this.value.length == 0 : !this.value || this.multiple
         ) {
           setTimeout(() => {
-            const el = this.$children[0].$el.querySelector(".vs-select--item");
+            const el = this.$children[0].$el.querySelector('.vs-select--item');
             if (el) el.focus();
           }, 50);
         }
@@ -442,12 +442,12 @@ export default {
       if (event.target === this.$refs.inputselect || event.target === document.body) {
         return
       }
-      const closestx = event.target.closest(".vs-select--options");
+      const closestx = event.target.closest('.vs-select--options');
 
       if (!closestx) {
         this.closeOptions();
         if (this.autocomplete) {
-          this.filterItems("");
+          this.filterItems('');
         }
         this.changeValue();
       }
@@ -455,16 +455,16 @@ export default {
     closeOptions() {
       this.active = false;
       this.setLabelClass(this.$refs.inputSelectLabel, false);
-      document.removeEventListener("click", this.clickBlur);
+      document.removeEventListener('click', this.clickBlur);
     },
     changePosition() {
-      let elx = this.$refs.inputselect;
-      let content = this.$refs.vsSelectOptions;
-      let conditional = this.autocomplete;
+      const elx = this.$refs.inputselect;
+      const content = this.$refs.vsSelectOptions;
+      const conditional = this.autocomplete;
       let topx = 0;
       let leftx = 0;
       let widthx = 0;
-      let scrollTopx = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollTopx = window.pageYOffset || document.documentElement.scrollTop;
       if (
         elx.getBoundingClientRect().top + content.scrollHeight + 20 >=
         window.innerHeight
@@ -486,7 +486,7 @@ export default {
       leftx = elx.getBoundingClientRect().left;
       widthx = elx.offsetWidth;
 
-      let cords = {
+      const cords = {
         left: `${leftx}px`,
         top: `${topx}px`,
         width: `${widthx}px`
@@ -498,12 +498,12 @@ export default {
       el.style.height = 0;
     },
     enter(el, done) {
-      let h = el.scrollHeight;
-      el.style.height = h + "px";
+      const h = el.scrollHeight;
+      el.style.height = `${h  }px`;
       done();
     },
     leave: function(el) {
-      el.style.height = 0 + "px";
+      el.style.height = `${0  }px`;
     },
     setLabelClass: function(label, focusing) {
       if (!label) {
@@ -511,11 +511,11 @@ export default {
       }
 
       if (focusing) {
-        label.classList.add("input-select-label-" + this.color + "--active");
+        label.classList.add(`input-select-label-${  this.color  }--active`);
         return;
       }
 
-      label.classList.remove("input-select-label-" + this.color + "--active");
+      label.classList.remove(`input-select-label-${  this.color  }--active`);
     }
   }
 };

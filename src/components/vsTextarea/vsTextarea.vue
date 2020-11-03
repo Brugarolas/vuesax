@@ -12,8 +12,7 @@
       :value="value"
       v-bind="$attrs"
       class="vs-textarea"
-      v-on="listeners">
-    </textarea>
+      v-on="listeners" />
 
     <div
       v-if="counter"
@@ -27,7 +26,7 @@
 <script>
 import _color from '../../utils/color.js'
 export default {
-  name: "VsTextarea",
+  name: 'VsTextarea',
   inheritAttrs:false,
   props:{
     value:{},
@@ -61,7 +60,7 @@ export default {
   }),
   computed:{
     style() {
-      let style = {}
+      const style = {}
       style.border = `1px solid ${this.isFocus?_color.getColor(this.color,1):'rgba(0, 0, 0,.08)'}`
       style.height = this.height
       style.width = this.width

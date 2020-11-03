@@ -7,11 +7,11 @@
     <div class="con-img-upload">
       <div
         v-for="(img,index) in getFilesFilter"
+        :key="index"
         :class="{
           'fileError':img.error,
           'removeItem':itemRemove.includes(index)
         }"
-        :key="index"
         class="img-upload">
         <button
           class="btn-x-file"
@@ -44,11 +44,11 @@
         </button>
         <img
           v-if="img.src"
+          :key="index"
           :style="{
             maxWidth:img.orientation == 'h'?'100%':'none',
             maxHeight:img.orientation == 'w'?'100%':'none'
           }"
-          :key="index"
           :src="img.src"
           @touchend="viewImage(img.src,$event)"
           @click="viewImage(img.src,$event)">
@@ -87,9 +87,7 @@
           :style="{
             width:`${percent}%`
           }"
-          class="input-progress">
-
-        </span>
+          class="input-progress" />
         <button
           v-if="showUploadButton"
           :disabled="filesx.length == 0"
@@ -109,7 +107,7 @@
 </template>
 <script>
   import viewUpload from './viewUpload'
-  var lastTap = 0;
+  let lastTap = 0;
   export default {
     name: 'VsUpload',
     components:{
@@ -178,7 +176,7 @@
     }),
     computed:{
       getFilesFilter() {
-        let files = this.srcs.filter((item) => {
+        const files = this.srcs.filter((item) => {
           return !item.remove
         })
 
@@ -209,16 +207,16 @@
     },
     methods:{
       viewImage(src,evt){
-        var timeout;
+        let timeout;
 
-        var eventx = (('ontouchstart' in window) || (window.DocumentTouch && document instanceof window.DocumentTouch)) ? 'touchstart' : 'click';
+        const eventx = (('ontouchstart' in window) || (window.DocumentTouch && document instanceof window.DocumentTouch)) ? 'touchstart' : 'click';
         if(eventx == 'click'){
           this.viewActive = true
           this.viewSrc = src
         } else {
           if(evt.type == 'touchend'){
-            var currentTime = new Date().getTime();
-            var tapLength = currentTime - lastTap;
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
             clearTimeout(timeout);
             if (tapLength < 500 && tapLength > 0) {
               this.viewActive = true
@@ -239,10 +237,10 @@
       getFiles(e) {
 
         this.$emit('update:vsFile', e.target.value)
-        let _this = this
+        const _this = this
         function uploadImage(e) {
           let orientation = 'h'
-          var image = new Image();
+          const image = new Image();
           image.src = e.target.result;
           image.onload = function() {
             if(this.width > this.height){
@@ -263,7 +261,7 @@
           })
         }
 
-        var files = e.target.files;
+        const files = e.target.files;
         let count = (this.srcs.length - this.itemRemove.length)
         for (const file in files) {
 
@@ -276,7 +274,7 @@
               }
             }
 
-            var reader  = new FileReader();
+            const reader  = new FileReader();
             const filex = files[file];
             if (/image.*/.test(filex.type)) {
               this.typex = 'image'
@@ -324,14 +322,14 @@
         }
 
         const data = this.data || {};
-        for (var key in data) {
+        for (const key in data) {
           formData.append(key, data[key]);
         }
 
         if(this.singleUpload) {
           postFiles.forEach((filex)=>{
             const formData = new FormData();
-            for (var key in data) {
+            for (const key in data) {
               formData.append(key, data[key]);
             }
             formData.append(this.fileName, filex, filex.name)
@@ -346,7 +344,7 @@
         }
       },
       uploadx(index, formData){
-        let self = this
+        const self = this
         const xhr = new XMLHttpRequest();
 
         xhr.onerror = function error(e) {
@@ -375,7 +373,7 @@
         if (xhr.upload) {
           xhr.upload.onprogress = function progress(e) {
             if (e.total > 0) {
-              let percent = e.loaded / e.total * 100;
+              const percent = e.loaded / e.total * 100;
               if(typeof index == 'number'){
                 self.srcs[index].percent = Math.trunc(percent)
               } else {
@@ -391,7 +389,7 @@
 
         const headers = this.headers || {};
 
-        for (let head in headers) {
+        for (const head in headers) {
           if (headers.hasOwnProperty(head) && headers[head] !== null) {
             xhr.setRequestHeader(head, headers[head]);
           }

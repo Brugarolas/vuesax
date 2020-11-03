@@ -13,7 +13,7 @@
       <div
         ref="hours"
         class="time-h time"
-        @click="activeHours = true" >
+        @click="activeHours = true">
         {{ getHours }}
         <div
           v-show="activeHours"
@@ -25,7 +25,7 @@
             <li
               v-for="hour in hours24"
               :class="{'active-time': hour == getHours}"
-              @click="changeHours(hour)" >
+              @click="changeHours(hour)">
               {{ hour }}
             </li>
           </ul>
@@ -37,7 +37,7 @@
       <div
         ref="minutes"
         class="time-m time"
-        @click="activeMinutes = true" >
+        @click="activeMinutes = true">
         {{ getMinutes }}
         <div
           v-show="activeMinutes"
@@ -49,7 +49,7 @@
             <li
               v-for="minute in minutes"
               :class="{'active-time': minute == getMinutes}"
-              @click="changeMinutes(minute)" >
+              @click="changeMinutes(minute)">
               {{ minute }}
             </li>
           </ul>
@@ -62,7 +62,7 @@
 
 <script>
 export default {
-  name: "VsTimePicker",
+  name: 'VsTimePicker',
   inheritAttrs:false,
   props:{
     value:{}
@@ -84,11 +84,11 @@ export default {
   }),
   computed:{
     getMinutes() {
-      let minutesx = this.value.split(':')[1]
+      const minutesx = this.value.split(':')[1]
       return minutesx
     },
     getHours() {
-      let hoursx = this.value.split(':')[0]
+      const hoursx = this.value.split(':')[0]
       return hoursx
     },
     styleUlHours() {
@@ -124,12 +124,12 @@ export default {
     },
     changePositions() {
       // add hours ul position
-      let cordsHours = this.$refs.hours.getBoundingClientRect()
+      const cordsHours = this.$refs.hours.getBoundingClientRect()
       this.cords.hours = cordsHours
 
 
       // add minutes ul position
-      let cordsMinutes = this.$refs.minutes.getBoundingClientRect()
+      const cordsMinutes = this.$refs.minutes.getBoundingClientRect()
       this.cords.minutes = cordsMinutes
     },
     insertBody(elx){

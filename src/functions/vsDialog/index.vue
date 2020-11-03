@@ -7,7 +7,7 @@
       class="vs-component con-vs-dialog">
       <div
         class="vs-dialog-dark"
-        @click="handleClose($event,true)"/>
+        @click="handleClose($event,true)" />
       <div
         ref="dialogx"
         class="vs-dialog">
@@ -19,8 +19,10 @@
           <div class="con-title-after">
             <span
               :style="styleAfter"
-              class="after"/>
-            <h3 class="dialog-title">{{ title }} </h3>
+              class="after" />
+            <h3 class="dialog-title">
+              {{ title }}
+            </h3>
           </div>
           <vs-icon
             v-if="type=='alert'"
@@ -31,7 +33,7 @@
           />
         </header>     <!-- // slots  -->
         <div class="vs-dialog-text">
-          <slot/>
+          <slot />
           {{ text }}
         </div>
         <!-- footer buttons -->
@@ -49,7 +51,7 @@
             @click="cancelClose">{{ cancelText }}</vs-button>
         </footer>
 
-        <footer v-if="type=='alert'&&!isPrompt" >
+        <footer v-if="type=='alert'&&!isPrompt">
           <vs-button
             :color="color"
             :type="buttonAccept"
@@ -163,8 +165,8 @@ export default {
   },
   beforeDestroy() {
     // close the left open prompt
-    let elx = this.$refs.con
-    let parentx = this.parent ? this.parent : document.body
+    const elx = this.$refs.con
+    const parentx = this.parent ? this.parent : document.body
     if (elx) {
       parentx.removeChild(elx)
     }
@@ -219,8 +221,8 @@ export default {
 
     },
     insertBody(){
-      let elx = this.$refs.con
-      let parentx = this.parent ? this.parent : document.body
+      const elx = this.$refs.con
+      const parentx = this.parent ? this.parent : document.body
       parentx.insertBefore(elx, parentx.firstChild)
     },
   },

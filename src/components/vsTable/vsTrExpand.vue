@@ -6,7 +6,7 @@
     >
       <td :colspan="colspan">
         <div class="content-tr-expand">
-          <slot></slot>
+          <slot />
 
           <button
             v-if="close"

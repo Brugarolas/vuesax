@@ -1,7 +1,9 @@
 <template>
   <div class="vs-select-group">
-    <h4 v-if="!filterx">{{ title }}</h4>
-    <slot></slot>
+    <h4 v-if="!filterx">
+      {{ title }}
+    </h4>
+    <slot />
   </div>
 </template>
 <script>

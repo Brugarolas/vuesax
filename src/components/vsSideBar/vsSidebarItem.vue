@@ -8,18 +8,16 @@
       :to="to">
       <vs-icon
         :icon-pack="iconPack"
-        :icon="icon">
-      </vs-icon>
-      <slot></slot>
+        :icon="icon" />
+      <slot />
     </router-link>
     <a
       v-else
       :href="href">
       <vs-icon
         :icon-pack="iconPack"
-        :icon="icon">
-      </vs-icon>
-      <slot></slot>
+        :icon="icon" />
+      <slot />
     </a>
   </div>
 </template>

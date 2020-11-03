@@ -6,11 +6,11 @@
 export const injectDirectionClass = dir => {
   if(document) {
     if (dir) {
-      document.documentElement.classList.remove("vuesax-app-is-ltr");
-      document.documentElement.classList.add("vuesax-app-is-rtl");
+      document.documentElement.classList.remove('vuesax-app-is-ltr');
+      document.documentElement.classList.add('vuesax-app-is-rtl');
     } else {
-      document.documentElement.classList.add("vuesax-app-is-ltr");
-      document.documentElement.classList.remove("vuesax-app-is-rtl");
+      document.documentElement.classList.add('vuesax-app-is-ltr');
+      document.documentElement.classList.remove('vuesax-app-is-rtl');
     }
   }
 };

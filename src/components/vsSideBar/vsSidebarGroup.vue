@@ -4,13 +4,15 @@
     class="vs-sidebar-group"
     @mouseover="mouseover"
     @mouseout="mouseout">
-    <h4 @click="clickGroup">{{ title }} <vs-icon>keyboard_arrow_down</vs-icon></h4>
+    <h4 @click="clickGroup">
+      {{ title }} <vs-icon>keyboard_arrow_down</vs-icon>
+    </h4>
     <span class="vs-sidebar--tooltip">{{ title }}</span>
     <ul
       ref="items"
       :style="styleItems"
       class="vs-sidebar--group-items">
-      <slot></slot>
+      <slot />
     </ul>
   </div>
 </template>
@@ -67,7 +69,7 @@ export default {
     },
     clickGroup() {
       if(!this.openHover) {
-        let scrollHeight = this.$refs.items.scrollHeight
+        const scrollHeight = this.$refs.items.scrollHeight
         if(this.maxHeight == '0px') {
           this.maxHeight = `${scrollHeight}px`
           setTimeout(() => {
@@ -83,13 +85,13 @@ export default {
     },
     mouseover() {
       if(this.openHover) {
-        let scrollHeight = this.$refs.items.scrollHeight
+        const scrollHeight = this.$refs.items.scrollHeight
         this.maxHeight = `${scrollHeight}px`
       }
     },
     mouseout() {
       if(this.openHover) {
-        let scrollHeight = 0
+        const scrollHeight = 0
         this.maxHeight = `${scrollHeight}px`
       }
     }

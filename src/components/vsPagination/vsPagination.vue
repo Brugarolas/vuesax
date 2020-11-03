@@ -45,7 +45,7 @@
       vs-justify="flex-end"
       vs-align="center"
       vs-sm="12"
-      vs-xs="12" >
+      vs-xs="12">
       <div
         :style="stylePagination"
         :class="[`vs-pagination-${color}`]"
@@ -59,7 +59,7 @@
             <vs-icon
               :icon-pack="iconPack"
               :icon="prevIcon ? prevIcon : defaultPrevIcon"
-            ></vs-icon>
+            />
           </button>
           <ul class="vs-pagination--ul">
             <li
@@ -72,7 +72,7 @@
                 {{ page }}
               </span>
 
-              <div class="effect"></div>
+              <div class="effect" />
             </li>
           </ul>
           <!-- :style="styleBtn" -->
@@ -84,7 +84,7 @@
             <vs-icon
               :icon-pack="iconPack"
               :icon="nextIcon ? nextIcon : defaultNextIcon"
-            ></vs-icon>
+            />
           </button>
           <input
             v-if="goto"
@@ -259,7 +259,7 @@ export default {
     },
     getPages() {
       if (this.total <= this.max) {
-        let pages = this.setPages(1, this.total)
+        const pages = this.setPages(1, this.total)
         this.pages = pages
       }
       const even     = this.max % 2 === 0 ? 1 : 0

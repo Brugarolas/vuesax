@@ -12,12 +12,14 @@
         :style="style"
         class="vs-tooltip">
         <slot name="content">
-          <h4 v-if="title">{{ title }}</h4>
+          <h4 v-if="title">
+            {{ title }}
+          </h4>
           {{ text }}
         </slot>
       </div>
     </transition>
-    <slot></slot>
+    <slot />
   </div>
 </template>
 <script>
@@ -115,11 +117,11 @@ export default {
     changePosition(elxEvent, tooltip){
       this.noneAfter = false
       this.positionx = null
-      let elx = elxEvent.closest('.con-vs-tooltip')
-      let scrollTopx = window.pageYOffset || document.documentElement.scrollTop;
+      const elx = elxEvent.closest('.con-vs-tooltip')
+      const scrollTopx = window.pageYOffset || document.documentElement.scrollTop;
       let topx = elx.getBoundingClientRect().top + scrollTopx - tooltip.clientHeight - 4
       let leftx = elx.getBoundingClientRect().left - tooltip.clientWidth / 2 + elx.clientWidth / 2
-      let widthx = elx.clientWidth
+      const widthx = elx.clientWidth
 
       if(this.position === 'bottom'){
         topx = elx.getBoundingClientRect().top + scrollTopx + elx.clientHeight + 4

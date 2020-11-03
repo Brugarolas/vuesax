@@ -1,4 +1,4 @@
-import { injectDirectionClass } from "./utils/rtl";
+import { injectDirectionClass } from './utils/rtl';
 import vsFunctions from './functions'
 /**
  * Vuesax global mixin, all vueasx functions and properties injected

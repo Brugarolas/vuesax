@@ -4,14 +4,13 @@
     rowspan="1"
     @click="sortValue()">
     <div class="vs-table-text">
-      <slot></slot>
+      <slot />
       <span
         v-if="isColumnSelectedForSort && currentSort != 0"
         class="sort-th">
         <vs-icon
           :icon="currentSort == 1 ? 'expand_less' : 'expand_more'"
-          class="th-sort-icon">
-        </vs-icon>
+          class="th-sort-icon" />
       </span>
     </div>
   </th>

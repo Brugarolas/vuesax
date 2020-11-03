@@ -6,7 +6,7 @@ const loadingConstructor = Vue.extend(vsLoading);
 export default {
   name:'loading',
   vsfunction(parameters){
-    let instance = new loadingConstructor();
+    const instance = new loadingConstructor();
     let containerx = document.body
     if(parameters){
       instance.$data.type = parameters.type || 'default'

@@ -7,9 +7,8 @@
       <vs-icon
         v-if="$slots.edit"
         class="icon-edit"
-        icon="edit">
-      </vs-icon>
-      <slot></slot>
+        icon="edit" />
+      <slot />
       <span
         v-if="$slots.edit"
         class="empty">
@@ -60,14 +59,14 @@ export default {
     },
     clicktd (evt) {
       if(this.$slots.edit) {
-        let tr = evt.target.closest('tr')
+        const tr = evt.target.closest('tr')
         if(!this.activeEdit) {
-          let trx = Vue.extend(trExpand);
-          let instance = new trx({parent: this, propsData: {colspan: this.$parent.colspan, close: true}});
+          const trx = Vue.extend(trExpand);
+          const instance = new trx({parent: this, propsData: {colspan: this.$parent.colspan, close: true}});
           instance.$slots.default = this.$slots.edit
           instance.vm = instance.$mount();
           instance.$on('click', this.close)
-          var nuevo_parrafo = document.createElement('tr').appendChild(instance.vm.$el);
+          const nuevo_parrafo = document.createElement('tr').appendChild(instance.vm.$el);
           this.insertAfter(tr, nuevo_parrafo)
           this.activeEdit = true
           setTimeout(()=>{
@@ -82,7 +81,7 @@ export default {
       }
     },
     close(){
-      let tr = this.$refs.td.closest('tr')
+      const tr = this.$refs.td.closest('tr')
       this.activeEdit = false
       tr.parentNode.removeChild(tr.nextSibling)
       window.removeEventListener('click', this.closeEdit)

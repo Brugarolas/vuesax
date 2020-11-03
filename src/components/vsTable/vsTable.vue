@@ -4,7 +4,7 @@
     class="vs-component vs-con-table">
     <!-- header -->
     <header class="header-table vs-table--header">
-      <slot name="header"></slot>
+      <slot name="header" />
       <div
         v-if="search"
         class="con-input-search vs-table--search">
@@ -12,7 +12,7 @@
           v-model="searchx"
           class="input-search vs-table--search-input"
           type="text">
-        <vs-icon icon="search"></vs-icon>
+        <vs-icon icon="search" />
       </div>
     </header>
     <div class="con-tablex vs-table--content">
@@ -37,13 +37,13 @@
                     :icon="isCheckedLine ? 'remove' : 'check'"
                     :checked="isCheckedMultiple"
                     size="small"
-                    @change="changeCheckedMultiple"/>
+                    @change="changeCheckedMultiple" />
                 </span>
               </th>
-              <slot name="thead"></slot>
+              <slot name="thead" />
             </tr>
           </thead>
-          <slot :data="datax"></slot>
+          <slot :data="datax" />
         </table>
       </div>
       <div
@@ -66,8 +66,7 @@
           :description-connector="descriptionConnector"
           :description-body="descriptionBody"
           @changeMaxItems="changeMaxItems"
-        >
-        </vs-pagination>
+        />
       </div>
     </div>
   </div>
@@ -75,7 +74,7 @@
 
 <script>
 export default {
-  name: "VsTable",
+  name: 'VsTable',
   props:{
     value:{},
     color: {
@@ -177,9 +176,9 @@ export default {
     queriedResults() {
       let queriedResults = this.data
       if(this.searchx && this.search) {
-        let dataBase = this.data
+        const dataBase = this.data
         queriedResults = dataBase.filter((tr)=>{
-          let values = this.getValues(tr).toString().toLowerCase()
+          const values = this.getValues(tr).toString().toLowerCase()
           return values.indexOf(this.searchx.toLowerCase()) != -1
         })
       }
@@ -193,8 +192,8 @@ export default {
       }
     },
     isCheckedLine () {
-      let lengthx = this.data.length
-      let lengthSelected = this.value.length
+      const lengthx = this.data.length
+      const lengthSelected = this.value.length
       return lengthx !== lengthSelected
     },
     isCheckedMultiple () {
@@ -207,7 +206,7 @@ export default {
       }
     },
     getThs () {
-      let ths = this.$slots.thead.filter(item => item.tag )
+      const ths = this.$slots.thead.filter(item => item.tag )
       return ths.length
     },
     tableHeaderStyle () {
@@ -267,8 +266,8 @@ export default {
   },
   methods:{
     loadData() {
-      let max = Math.ceil(this.currentx * this.maxItemsx)
-      let min = max - this.maxItemsx
+      const max = Math.ceil(this.currentx * this.maxItemsx)
+      const min = max - this.maxItemsx
 
       if(!this.searchx || this.sst) {
         this.datax = this.pagination ? this.getItems(min, max) : this.sortItems(this.data) || [];
@@ -277,9 +276,9 @@ export default {
       }
     },
     getItems(min, max) {
-      let dataBase = this.sortItems(this.data);
+      const dataBase = this.sortItems(this.data);
 
-      let items = []
+      const items = []
       dataBase.forEach((item, index) => {
         if(index >= min && index < max) {
           items.push(item)
@@ -317,7 +316,7 @@ export default {
       this.loadData();
     },
     normalize(string) {
-      return string.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      return string.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     },
     getValues: function getValues(obj) {
       function flattenDeep(val) {
@@ -329,9 +328,9 @@ export default {
       });
     },
     changeCheckedMultiple () {
-      let lengthx = this.data.length
-      let lengthSelected = this.value.length
-      let selectedx = (lengthx - lengthSelected)
+      const lengthx = this.data.length
+      const lengthSelected = this.value.length
+      const selectedx = (lengthx - lengthSelected)
       if (selectedx == 0) {
         this.$emit('input', [])
       } else {
@@ -340,7 +339,7 @@ export default {
     },
     handleCheckbox(tr) {
       if(this.multiple && this.onlyClickCheckbox){
-        let val = this.value.slice(0)
+        const val = this.value.slice(0)
         if(val.includes(tr)) {
           val.splice(val.indexOf(tr),1)
         } else {
@@ -353,7 +352,7 @@ export default {
     },
     clicktr (tr, isTr) {
       if(this.multiple && isTr && !this.onlyClickCheckbox){
-        let val = this.value.slice(0)
+        const val = this.value.slice(0)
         if(val.includes(tr)) {
           val.splice(val.indexOf(tr),1)
         } else {
@@ -381,24 +380,24 @@ export default {
     changeTdsWidth() {
       if(!this.value) return
 
-      let tbody = this.$refs.table.querySelector('tbody')
+      const tbody = this.$refs.table.querySelector('tbody')
 
       // Adding condition removes querySelector none error - if tbody isnot present
       if(tbody) {
-        let trvs = tbody.querySelector('.tr-values')
+        const trvs = tbody.querySelector('.tr-values')
         if (trvs === undefined || trvs === null ) return
-        let tds = trvs.querySelectorAll('.td')
+        const tds = trvs.querySelectorAll('.td')
 
-        let tdsx = []
+        const tdsx = []
 
         tds.forEach((td, index) => {
           tdsx.push({index: index, widthx: td.offsetWidth})
         });
 
 
-        let colgrouptable = this.$refs.colgrouptable
+        const colgrouptable = this.$refs.colgrouptable
         if (colgrouptable !== undefined && colgrouptable !== null ) {
-          let colsTable = colgrouptable.querySelectorAll('.col')
+          const colsTable = colgrouptable.querySelectorAll('.col')
           colsTable.forEach((col, index) => {
             col.setAttribute('width', tdsx[index].widthx)
           });

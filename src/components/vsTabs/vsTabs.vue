@@ -1,7 +1,7 @@
 <template lang="html">
   <div
     :class="[`vs-tabs-${color}`,`vs-tabs-position-${position}`]"
-    class="con-vs-tabs vs-tabs" >
+    class="con-vs-tabs vs-tabs">
     <div
       class="con-ul-tabs">
       <ul
@@ -28,7 +28,7 @@
               :icon-pack="child.iconPack"
               :icon="child.icon"
               :color="color"
-              class="vs-tabs--btn-icon"></vs-icon>
+              class="vs-tabs--btn-icon" />
             <span v-if="child.label">{{ child.label }}</span>
           </button>
 
@@ -40,16 +40,16 @@
             <vs-icon
               :icon-pack="child.iconPack"
               :icon="child.tag"
-              :color="child.tagColor"></vs-icon>
+              :color="child.tagColor" />
           </button>
         </li>
       </ul>
       <span
         :style="stylex"
-        class="line-vs-tabs"/>
+        class="line-vs-tabs" />
     </div>
     <div class="con-slot-tabs">
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>

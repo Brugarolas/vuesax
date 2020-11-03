@@ -1,5 +1,5 @@
 <template>
-  <div class="vs-spacer"></div>
+  <div class="vs-spacer" />
 </template>
 <script>
 export default {

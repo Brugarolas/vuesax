@@ -18,9 +18,11 @@
         @change="handleCheckbox"
       />
 
-      <vs-icon v-if="$slots.expand">keyboard_arrow_down</vs-icon>
+      <vs-icon v-if="$slots.expand">
+        keyboard_arrow_down
+      </vs-icon>
     </td>
-    <slot></slot>
+    <slot />
   </tr>
 </template>
 <script>
@@ -50,7 +52,7 @@ export default {
       }
     },
     getColspanExpand () {
-      let lengthx = this.$parent.$refs.colgroup.querySelectorAll('th').length
+      const lengthx = this.$parent.$refs.colgroup.querySelectorAll('th').length
       return lengthx
     },
     isSelected(){

@@ -6,7 +6,7 @@
       class="vs-content-sidebar">
       <div
         v-if="!hiddenBackground"
-        class="vs-sidebar--background"></div>
+        class="vs-sidebar--background" />
       <div
         ref="sidebarContainer"
         :class="[
@@ -25,20 +25,20 @@
           v-if="$slots.header"
           class="vs-sidebar--header"
         >
-          <slot name="header"></slot>
+          <slot name="header" />
         </header>
 
         <div class="vs-sidebar--items">
-          <slot></slot>
+          <slot />
         </div>
 
-        <vs-spacer v-if="spacer"></vs-spacer>
+        <vs-spacer v-if="spacer" />
 
         <footer
           v-if="$slots.footer"
           class="vs-sidebar--footer"
         >
-          <slot name="footer"></slot>
+          <slot name="footer" />
         </footer>
       </div>
     </div>
@@ -119,8 +119,8 @@ export default {
     },
     addEventClick () {
       this.$nextTick(() => {
-        let parentx = typeof this.parent == 'string' ? document.querySelector(this.parent) : this.parent
-        let element = parentx || window
+        const parentx = typeof this.parent == 'string' ? document.querySelector(this.parent) : this.parent
+        const element = parentx || window
         if(this.value) {
           setTimeout(() => {
             element.addEventListener('click', this.closeSidebar)
@@ -130,18 +130,18 @@ export default {
       })
     },
     closeSidebar (evt) {
-      let parent = evt.target.closest('.vs-sidebar')
+      const parent = evt.target.closest('.vs-sidebar')
       if (!parent) {
         this.$emit('input', false)
-        let parentx = typeof this.parent == 'string' ? document.querySelector(this.parent) : this.parent
-        let element = parentx || window
+        const parentx = typeof this.parent == 'string' ? document.querySelector(this.parent) : this.parent
+        const element = parentx || window
         element.removeEventListener('click', this.closeSidebar)
       }
     },
     insertBody () {
       if(this.parent) {
-        let elx = this.$refs.sidebarbackground
-        let parentx = typeof this.parent == 'string' ? document.querySelector(this.parent) : this.parent
+        const elx = this.$refs.sidebarbackground
+        const parentx = typeof this.parent == 'string' ? document.querySelector(this.parent) : this.parent
         parentx.insertBefore(elx, parentx.firstChild)
       }
 

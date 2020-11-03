@@ -14,7 +14,7 @@
       'margin-left':vsOffset*100/12+'%',
       'width':vsW*100/12+'%'}"
     class="vs-col">
-    <slot/>
+    <slot />
   </div>
 </template>
 

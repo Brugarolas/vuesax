@@ -24,9 +24,9 @@
       <vs-icon 
         v-if="$parent.parent.multiple" 
         class="icon-item vs-select--item-icon" 
-        icon="check_circle"></vs-icon>
+        icon="check_circle" />
       <span
-        v-html="getText"></span>
+        v-html="getText" />
     </button>
   </li>
 </template>
@@ -115,17 +115,17 @@ export default {
     },
     valueInputx(){
       if(this.visible){
-        let valueInputx = this.valueInputx.split(',')
+        const valueInputx = this.valueInputx.split(',')
         if(valueInputx[valueInputx.length-1] == ''){
           this.getText = this.text
           return
         }
         let valuex = valueInputx[valueInputx.length-1]
-        var re = new RegExp(valuex,"i");
+        const re = new RegExp(valuex,'i');
         if(this.text.toUpperCase().indexOf(valuex.toUpperCase()) == 0){
           valuex = this.MaysPrimera(valuex)
         }
-        let text = this.text.replace(re,`<span class="searchx">${valuex}</span>`)
+        const text = this.text.replace(re,`<span class="searchx">${valuex}</span>`)
         this.getText = text
       } else {
         this.getText = this.text
@@ -158,7 +158,7 @@ export default {
     },
     backspace(){
       if(this.$parent.parent.autocomplete){
-        let valueInput = this.$parent.parent.$refs.inputselect.value
+        const valueInput = this.$parent.parent.$refs.inputselect.value
         this.$parent.parent.$refs.inputselect.value = valueInput.substr(0,valueInput.length-1)
         this.$parent.parent.$refs.inputselect.focus()
       }
@@ -170,7 +170,7 @@ export default {
 
       function getNextLi(li,orientationObject){
         if(li && li.localName == 'li'){
-          let lix = li[orientationObject]
+          const lix = li[orientationObject]
           if(li.style){
             if(li.style.display == 'none'){
               return getNextLi(lix,orientationObject)
@@ -185,7 +185,7 @@ export default {
         }
       }
 
-      var children = this.$parent.parent.$children
+      let children = this.$parent.parent.$children
 
       children.forEach((item)=>{
         if(item.$children.length > 0) {
@@ -201,7 +201,7 @@ export default {
         orientationObject = 'previousSibling'
         lengthx = children.length
       }
-      let nextElement = getNextLi(this.$el[orientationObject],orientationObject)
+      const nextElement = getNextLi(this.$el[orientationObject],orientationObject)
 
       if(nextElement){
         nextElement.querySelector('.vs-select--item').focus()
@@ -235,7 +235,7 @@ export default {
       if(this.disabledx){
         return
       }
-      let text = this.text
+      const text = this.text
       if(!this.$parent.parent.multiple){
         this.$parent.parent.active = false
         document.removeEventListener('click',this.$parent.parent.clickBlur)

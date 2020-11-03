@@ -10,8 +10,7 @@
         <div
           v-if="activeEffectClick&&clickEffect"
           :style="styleEffectClick"
-          class="effect-click">
-        </div>
+          class="effect-click" />
       </transition>
 
       <h4
@@ -29,15 +28,15 @@
         <div
           v-if="type!='material'"
           :style="styleEffect1"
-          class="effect-1 effects"></div>
+          class="effect-1 effects" />
         <div
           v-if="type!='material'"
           :style="styleEffect2"
-          class="effect-2 effects"></div>
+          class="effect-2 effects" />
         <div
           v-if="type!='material'"
           :style="styleEffect3"
-          class="effect-3 effects"></div>
+          class="effect-3 effects" />
 
         <img :src="src">
 
@@ -55,7 +54,7 @@
             stroke-linecap="round"
             cx="33"
             cy="33"
-            r="30"></circle>
+            r="30" />
         </svg>
 
       </div>

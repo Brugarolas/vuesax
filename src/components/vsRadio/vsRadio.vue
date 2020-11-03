@@ -14,13 +14,13 @@
       class="vs-radio">
       <span
         :style="styles"
-        class="vs-radio--borde"/>
+        class="vs-radio--borde" />
       <span
         :style="styleCircle"
-        class="vs-radio--circle"/>
+        class="vs-radio--circle" />
     </span>
     <span class="vs-radio--label">
-      <slot/>
+      <slot />
     </span>
   </label>
 </template>
@@ -48,7 +48,7 @@ export default {
       }
     },
     attrs(){
-      let attrsx = JSON.parse(JSON.stringify(this.$attrs))
+      const attrsx = JSON.parse(JSON.stringify(this.$attrs))
       return {
         attrsx
       }
