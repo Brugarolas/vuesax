@@ -3298,7 +3298,7 @@ var web_dom_collections_for_each = __webpack_require__("79be");
 // EXTERNAL MODULE: /Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("41fa");
 
-// CONCATENATED MODULE: /Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f47c74d-vue-loader-template"}!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js??ref--0-0!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib??vue-loader-options!./src/components/vsButton/vsButton.vue?vue&type=template&id=7dc0def5&lang=html&
+// CONCATENATED MODULE: /Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f47c74d-vue-loader-template"}!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js??ref--0-0!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib??vue-loader-options!./src/components/vsButton/vsButton.vue?vue&type=template&id=646dafe2&lang=html&
 var render = function () {
 var _obj;
 var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',_vm._g(_vm._b({ref:"btn",staticClass:"vs-component vs-button",class:[("vs-button-" + (_vm.isColor() ? _vm.color : null)),("vs-button-" + _vm.type),{
@@ -3315,7 +3315,7 @@ var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/vsButton/vsButton.vue?vue&type=template&id=7dc0def5&lang=html&
+// CONCATENATED MODULE: ./src/components/vsButton/vsButton.vue?vue&type=template&id=646dafe2&lang=html&
 
 // EXTERNAL MODULE: /Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/core-js/modules/es.array.concat.js
 var es_array_concat = __webpack_require__("643d");
@@ -3661,12 +3661,12 @@ var es_string_trim = __webpack_require__("789c");
       type: Boolean
     },
     to: {
-      default: false,
-      type: String | Object
+      default: null,
+      type: [String, Object]
     },
     href: {
       default: '',
-      type: String | Object
+      type: [String, Object]
     },
     target: {
       default: false,
@@ -3792,7 +3792,7 @@ var es_string_trim = __webpack_require__("789c");
       var _this2 = this;
 
       this.$router.push(this.to).catch(function (err) {
-        _this2.$emit("routeErr", err);
+        _this2.$emit("route-error", err);
       });
     },
     is: function is(which) {
@@ -3830,7 +3830,9 @@ var es_string_trim = __webpack_require__("789c");
 
       this.$emit('click', event);
       this.$nextTick(function () {
-        if (_this4._isBeingDestroyed || _this4._isDestroyed) {
+        var btn = _this4.$refs.btn;
+
+        if (_this4._isBeingDestroyed || _this4._isDestroyed || !btn) {
           return;
         }
 
@@ -3854,7 +3856,6 @@ var es_string_trim = __webpack_require__("789c");
           _this4.isActive = true;
         }
 
-        var btn = _this4.$refs.btn;
         var xEvent = event.offsetX;
         var yEvent = event.offsetY;
         var radio = btn.clientWidth * 3;
@@ -11178,12 +11179,12 @@ var vsSidebarGroup_component = normalizeComponent(
   Vue.component(vsSidebarItem.name, vsSidebarItem);
   Vue.component(vsSidebarGroup.name, vsSidebarGroup);
 });
-// CONCATENATED MODULE: /Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f47c74d-vue-loader-template"}!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js??ref--0-0!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib??vue-loader-options!./src/components/vsDropDown/vsDropDown.vue?vue&type=template&id=5d4c1376&lang=html&
-var vsDropDownvue_type_template_id_5d4c1376_lang_html_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',_vm._g(_vm._b({ref:"dropdown",staticClass:"vs-con-dropdown parent-dropdown",attrs:{"type":"button"}},'button',_vm.$attrs,false),_vm.listeners),[_vm._t("default")],2)}
-var vsDropDownvue_type_template_id_5d4c1376_lang_html_staticRenderFns = []
+// CONCATENATED MODULE: /Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4f47c74d-vue-loader-template"}!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js??ref--0-0!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib??vue-loader-options!./src/components/vsDropDown/vsDropDown.vue?vue&type=template&id=4ea128a3&lang=html&
+var vsDropDownvue_type_template_id_4ea128a3_lang_html_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',_vm._g(_vm._b({ref:"dropdown",staticClass:"vs-con-dropdown parent-dropdown",attrs:{"type":"button"}},'button',_vm.$attrs,false),_vm.listeners),[_vm._t("default")],2)}
+var vsDropDownvue_type_template_id_4ea128a3_lang_html_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/vsDropDown/vsDropDown.vue?vue&type=template&id=5d4c1376&lang=html&
+// CONCATENATED MODULE: ./src/components/vsDropDown/vsDropDown.vue?vue&type=template&id=4ea128a3&lang=html&
 
 // CONCATENATED MODULE: /Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/thread-loader/dist/cjs.js!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/babel-loader/lib??ref--12-1!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js??ref--0-0!/Users/brugarolas/.nvm/versions/node/v10.22.0/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib??vue-loader-options!./src/components/vsDropDown/vsDropDown.vue?vue&type=script&lang=js&
 
@@ -11390,7 +11391,7 @@ var vsDropDownvue_type_template_id_5d4c1376_lang_html_staticRenderFns = []
         if (typex == 'over') {
           dropdownMenu.dropdownVisible = this.vsDropdownVisible = true;
         } else {
-          if (!evt.relatedTarget.classList.contains('vs-dropdown-menu')) {
+          if (evt.relatedTarget && !evt.relatedTarget.classList.contains('vs-dropdown-menu')) {
             dropdownMenu.dropdownVisible = this.vsDropdownVisible = false;
           }
         }
@@ -11410,8 +11411,8 @@ var vsDropDownvue_type_template_id_5d4c1376_lang_html_staticRenderFns = []
 
 var vsDropDown_component = normalizeComponent(
   vsDropDown_vsDropDownvue_type_script_lang_js_,
-  vsDropDownvue_type_template_id_5d4c1376_lang_html_render,
-  vsDropDownvue_type_template_id_5d4c1376_lang_html_staticRenderFns,
+  vsDropDownvue_type_template_id_4ea128a3_lang_html_render,
+  vsDropDownvue_type_template_id_4ea128a3_lang_html_staticRenderFns,
   false,
   null,
   null,
