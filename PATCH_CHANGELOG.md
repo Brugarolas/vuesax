@@ -1,3 +1,8 @@
+## [3.12.2-patch-4] 06/11/2020
+### Fixed
+- Fix another VsButton throwing error on $nextTick(), when component does not exist in next tick
+- Fix 'cannot read property classList' on VsDropDown when event.relatedTarget is null
+
 ## [3.12.2-patch-3] 29/10/2020
 ### Fixed
 - Fix buttons on VsInputNumber

@@ -70,7 +70,7 @@ API:
     parameters: null
     description: Presence or absence of target property
     default: false
-  - name: routeErr
+  - name: route-error
     type: Event
     parameters: error
     description:  Triggers method when there's error in routing using button component

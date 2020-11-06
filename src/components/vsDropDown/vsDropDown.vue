@@ -160,7 +160,7 @@ export default {
         if(typex == 'over'){
           dropdownMenu.dropdownVisible = this.vsDropdownVisible = true
         } else {
-          if (!evt.relatedTarget.classList.contains('vs-dropdown-menu')) {
+          if (evt.relatedTarget && !evt.relatedTarget.classList.contains('vs-dropdown-menu')) {
             dropdownMenu.dropdownVisible = this.vsDropdownVisible = false
           }
         }

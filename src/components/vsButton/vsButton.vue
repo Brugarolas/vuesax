@@ -104,12 +104,12 @@ export default {
       type:Boolean
     },
     to:{
-      default:false,
-      type:String | Object
+      default:null,
+      type:[String, Object]
     },
     href:{
       default:'',
-      type:String | Object
+      type:[String, Object]
     },
     target:{
       default:false,
@@ -221,7 +221,7 @@ export default {
       }
     },
     routerPush() {
-      this.$router.push(this.to).catch(err => { this.$emit("routeErr", err) })
+      this.$router.push(this.to).catch(err => { this.$emit("route-error", err) })
     },
     is(which){
       let type = this.type
@@ -255,7 +255,9 @@ export default {
     clickButton(event){
       this.$emit('click', event)
       this.$nextTick(() => {
-        if (this._isBeingDestroyed || this._isDestroyed){
+        const btn = this.$refs.btn
+
+        if (this._isBeingDestroyed || this._isDestroyed || !btn) {
           return
         }
         if(this.isActive){
@@ -274,7 +276,7 @@ export default {
         if (this.type == 'border' || this.type == 'flat') {
           this.isActive = true
         }
-        let btn = this.$refs.btn
+
         let xEvent = event.offsetX
         let yEvent = event.offsetY
         let radio = btn.clientWidth * 3
@@ -308,8 +310,6 @@ export default {
           }, this.time * 1100)
         }
       });
-
-
     },
     isColor(){
       return _color.isColor(this.color)
