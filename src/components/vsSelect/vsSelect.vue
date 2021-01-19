@@ -465,6 +465,11 @@ export default {
       let leftx = 0;
       let widthx = 0;
       let scrollTopx = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (!elx || !content) {
+        return
+      }
+
       if (
         elx.getBoundingClientRect().top + content.scrollHeight + 20 >=
         window.innerHeight

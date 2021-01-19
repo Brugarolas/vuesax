@@ -1,6 +1,6 @@
 {
   "name": "@brugarolas/vuesax",
-  "version": "3.12.2-patch-4",
+  "version": "3.12.2-patch-5",
   "description": "Framework Components for Vue js. This is a fork. Original framework is made by lusaxweb.",
   "license": "MIT",
   "author": "andres-brugarolas",
@@ -38,11 +38,9 @@
     "docs:deploy": "sh scripts/deploy.sh",
     "deployx": "npm run docs:deploy && npm run deploy",
     "deployx2": "npm run docs:deploy && npm run deploy2",
-    "new:component": "sh scripts/newComponent.sh",
-    "postinstall": "node postinstall.js"
+    "new:component": "sh scripts/newComponent.sh"
   },
   "dependencies": {
-    "chalk": "^2.4.2",
     "vue": "^2.6.12"
   },
   "devDependencies": {

@@ -94,6 +94,7 @@ export default {
     window.addEventListener('resize', this.changeHeight)
     const maxHeightx = this.$refs.content.scrollHeight
     if(this.open) {
+      this.$emit('open')
       this.maxHeight = `${maxHeightx}px`
     }
   },
@@ -104,11 +105,14 @@ export default {
     changeHeight () {
       const maxHeightx = this.$refs.content.scrollHeight
       if(this.maxHeight != '0px') {
+        this.$emit('resize')
         this.maxHeight = `${maxHeightx}px`
       }
     },
     toggleContent() {
       if(this.openHover || this.disabled) return
+
+      this.$emit('click')
 
       if(this.accordion) {
         this.$parent.closeAllItems(this.$el)
@@ -128,8 +132,10 @@ export default {
     initMaxHeight() {
       const maxHeightx = this.$refs.content.scrollHeight
       if(this.maxHeight == '0px') {
+        this.$emit('open')
         this.maxHeight = `${maxHeightx}px`
       } else {
+        this.$emit('close')
         this.maxHeight = `0px`
       }
     },
@@ -137,11 +143,13 @@ export default {
       if(this.disabled) return
       let maxHeightx = this.$refs.content.scrollHeight
       if(this.openHover) {
+        this.$emit('open')
         this.maxHeight = `${maxHeightx}px`
       }
     },
     mouseout() {
       if(this.openHover) {
+        this.$emit('close')
         this.maxHeight = `0px`
       }
     }

@@ -25,6 +25,7 @@
           'hasIcon':icon,
           'icon-after-input':iconAfter
         }]"
+        :autocomplete="autocomplete"
         :placeholder="null"
         :value="value"
         v-bind="$attrs"
@@ -144,6 +145,10 @@ export default {
     autofocus:{
       default:false,
       type:[Boolean,String]
+    },
+    autocomplete:{
+      default:null,
+      type:String
     },
     icon:{
       default:null,

@@ -32,7 +32,7 @@
         </header>     <!-- // slots  -->
         <div class="vs-dialog-text">
           <slot/>
-          {{ text }}
+          <span class="vs-dialog-text__text">{{ text }}</span>
         </div>
         <!-- footer buttons -->
         <footer v-if="buttonsHidden?false:isPrompt||type=='confirm'">
@@ -213,8 +213,7 @@ export default {
     cancelClose(){
       this.fActive = false
       this.$emit('update:active',false)
-      this.$emit('cancel')
-      // this.$emit('cancel')
+      this.$emit('cancel',this.parameters)
       this.cancel?this.cancel(this.parameters):null
 
     },

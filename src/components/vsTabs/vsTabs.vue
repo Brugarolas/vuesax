@@ -113,7 +113,13 @@ export default {
   watch: {
     value(index) {
       const activeIndex = this.parseIndex(index)
-      this.activeChild(activeIndex)
+      this.$nextTick(() => {
+        if (this._isBeingDestroyed || this._isDestroyed){
+          return
+        }
+
+        this.activeChild(activeIndex)
+      })
     },
   },
   mounted(){
