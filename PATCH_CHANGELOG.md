@@ -1,3 +1,7 @@
+## [3.12.2-patch-6] 19/01/2021
+### Added
+- Added `pattern` parameter to VsInput
+
 ## [3.12.2-patch-5] 19/01/2021
 ### Fixed
 - Fix error `Cannot read property 'getBoundingClientRect' of undefined` on `changePosition()` method of VsSelect

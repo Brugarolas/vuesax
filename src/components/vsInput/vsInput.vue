@@ -26,6 +26,7 @@
           'icon-after-input':iconAfter
         }]"
         :autocomplete="autocomplete"
+        :pattern="pattern"
         :placeholder="null"
         :value="value"
         v-bind="$attrs"
@@ -147,6 +148,10 @@ export default {
       type:[Boolean,String]
     },
     autocomplete:{
+      default:null,
+      type:String
+    },
+    pattern:{
       default:null,
       type:String
     },
